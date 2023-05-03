@@ -8,7 +8,7 @@ import {CarritoDeComprasComponent} from "./componentes/carrito-de-compras/carrit
 const routes: Routes = [
   {path: "", redirectTo: "layout", pathMatch: "full"},
   {path:"layout", component: LayoutComponent},
-  {path:'cart', component: CarritoDeComprasComponent},
+  {path:'carrito', component: CarritoDeComprasComponent},
   {path:"agregarProducto", component:AgregarNuevoProductoComponent},
   {path:"**", redirectTo: "", pathMatch: "full"}
 ];

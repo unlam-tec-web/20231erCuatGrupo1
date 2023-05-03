@@ -3,13 +3,14 @@
 .resumenCompra {
   margin-bottom: 8vh;
 }
-
+.tituloDeTabla{
+  text-align: left;
+}
 .resumenCompra table {
   width: 100%;
   border-collapse: collapse;
 
 }
-
 .resumenCompra table tr {
   border-bottom: solid #B0B0B0 1px;
 }
@@ -43,6 +44,9 @@
   color: #8f8f8f;
 }
 
+.h5:hover{
+  color: #8f8f8f;
+}
 .cart-img {
   display: flex;
   flex-wrap: wrap;

@@ -1,21 +1,25 @@
 /*CSS DEL FOOTER*/
-
 footer {
   background-color: black;
+}
+footer p{
+  text-align: center;
+color:#f6f5f3;
 }
 
 .social {
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .social i {
   color: #f6f5f3;
 
 }
+.social i:hover {
+  color: #8f8f8f;
 
+}
 .redes-footer {
   color: #f6f5f3;
-  text-align: center;
 }
