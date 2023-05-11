@@ -1,0 +1,83 @@
+
+/*CSS CARRITO DE COMPRAS Y TABLAS*/
+.resumenCompra {
+  margin-bottom: 8vh;
+}
+.tituloDeTabla{
+  text-align: left;
+}
+.resumenCompra table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+.resumenCompra table tr {
+  border-bottom: solid #B0B0B0 1px;
+}
+
+.resumenCompra table tr th {
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
+  background-color: black;
+  border-radius: 1%;
+
+}
+
+.resumenCompra table tr td {
+  padding: 10px 5px;
+  padding-bottom: 50px;
+}
+
+.resumenCompra table tr td input {
+  width: 80px;
+  height: 30px;
+  padding: 5px;
+}
+
+.resumenCompra table tr td a i {
+  font-size: 25px;
+  color: black;
+}
+
+.resumenCompra table tr td a i:hover {
+  color: #8f8f8f;
+}
+
+.h5:hover{
+  color: #8f8f8f;
+}
+.cart-img {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cart-img a{
+  text-decoration: none;
+  color:black;
+}
+
+.cart-img img {
+  width: 90px;
+  height: 90px;
+  margin-right: 10px;
+
+}
+
+/*CSS DEL BOTON DEL CARRITO*/
+.boton-carrito-comprar {
+  display: flex;
+  justify-content: right;
+}
+
+.boton-carrito-comprar .btn-primary {
+  background-color: black;
+  color: #f6f5f3;
+  border-color: black;
+}
+
+.boton-carrito-comprar .btn-primary:hover {
+  background-color: #f6f5f3;
+  color: black;
+  border-color: black;
+}
