@@ -5,6 +5,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { SingInComponent } from './componentes/sing-in/sing-in.component';
 import { SingUpComponent } from './componentes/sing-up/sing-up.component';
+import {CarritoDeComprasComponent} from "./componentes/carrito-de-compras/carrito-de-compras.component";
+
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: "full"},
@@ -12,7 +14,7 @@ const routes: Routes = [
   {path:"singIn", component: SingInComponent},
   {path:"singUp", component: SingUpComponent},
   {path:"home", component: HomeComponent},
-  {path:"carrito", component:AgregarNuevoProductoComponent}, //se tiene que cambiar por el componente de carrito
+  {path:'carrito', component: CarritoDeComprasComponent},
   {path:"agregarProducto", component:AgregarNuevoProductoComponent},
   {path:"**", redirectTo: "", pathMatch: "full"}
 ];
