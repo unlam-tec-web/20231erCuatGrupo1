@@ -1,4 +1,14 @@
+.navbar{
+  background-color: #3630EA!important;
+}
 
-a:hover{
-  transform: translateY(-2px);
+.sing-in{
+  border: 2px solid white!important;
+  background-color: white!important;
+  color: #3630EA!important;
+  transition: 0.5s;
+}
+
+.sing-in:hover{
+  transform: scale(1.1);
 }
