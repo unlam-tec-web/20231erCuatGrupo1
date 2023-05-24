@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
+// Import de componentes de la aplicacion
 import { AppComponent } from './app.component';
 
+import { SingUpComponent } from './componentes/sing-up/sing-up.component';
+import { SingInComponent } from './componentes/sing-in/sing-in.component';
 import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-producto/agregar-nuevo-producto.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -18,6 +20,8 @@ import { CarritoDeComprasComponent } from './componentes/carrito-de-compras/carr
 @NgModule({
   declarations: [
     AppComponent,
+    SingInComponent,
+    SingUpComponent,
     AgregarNuevoProductoComponent,
     CarritoDeComprasComponent,
     NavbarComponent,
@@ -30,7 +34,8 @@ import { CarritoDeComprasComponent } from './componentes/carrito-de-compras/carr
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

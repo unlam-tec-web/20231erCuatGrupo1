@@ -9,7 +9,7 @@
 
     <div class="collapse navbar-collapse ms-3" id="navbarNav">
       <form class="d-flex me-3">
-        <input class="form-control rounded-pill" placeholder="Buscar producto"/>
+        <input class="form-control rounded" placeholder="Buscar producto"/>
       </form>
 
       <ul class="navbar-nav">
@@ -25,7 +25,9 @@
       </ul>
     </div>
     
-    <button type="button" class="btn btn-light me-4" routerLink="/carrito"><i class="bi bi-cart4"></i></button>
-    <button class="fw-bold text-light px-4 btn sing-in rounded-pill" routerLink="/singIn">Iniciar sesión</button>
+    <button type="button" class="btn fw-bold text-light sing-in rounded px-3 me-4" routerLink="/carrito">
+      <span class="me-2">Mi carrito</span><i class="bi bi-cart4"></i>
+    </button>
+    <button class="btn fw-bold text-light px-3 sing-in rounded" routerLink="/singIn">Iniciar sesión</button>
   </div>
 </nav>

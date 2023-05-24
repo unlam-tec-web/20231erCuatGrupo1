@@ -1,11 +1,10 @@
-.sing-in{
+.sing-up{
     border: 2px solid #3630EA!important;
     background-color: #3630EA!important;
     transition: 0.5s;
 }
 
-.sing-in:hover{
+.sing-up:hover{
     background-color: white!important;
     color: #3630EA!important;
-    transform: scale(1.1);
 }

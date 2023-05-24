@@ -1,46 +1,51 @@
-<div class="container shadow border rounded-5 bg-white">
-    <div class="row px-5">
-      <div class="col-sm-6 text-black">
-        <!--<div class="px-5 ms-xl-4">
-          <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
-          <span class="h1 fw-bold mb-0">Logo</span>
-        </div>-->
-  
-        <div class="d-flex justify-content-center align-items-center px-5">
-          <form class="py-5">
-            <h2 class="mb-5">Formulario de registro</h2>
+<div class="container-fluid rounded mt-5">
+  <div class="d-flex justify-content-center rounded">
+    <div class="col-md-4 shadow p-5 bg-white">
 
-            <div class="row">
-                <div class="col-md-6 mb-4 text-start">
-                    <label class="form-label fs-4 fw-bold" for="firstName">Nombre</label>
-                    <input type="text" id="firstName" class="form-control fs-5 rounded-pill"/>
-                </div>
-                <div class="col-md-6 mb-4 text-start">
-                    <label class="form-label fs-4 fw-bold" for="lastName">Apellido</label>
-                    <input type="text" id="lastName" class="form-control fs-5 rounded-pill"/>
-                </div>
-            </div>
-
-            <div class="mb-4 text-start">
-                <label class="form-label fs-4 fw-bold" for="address">Dirección</label>
-                <input type="text" id="address" class="form-control fs-5 rounded-pill"/>
-            </div>
-
-            <div class="mb-4 text-start">
-                <label class="form-label fs-4 fw-bold" for="email">Email</label>
-                <input type="text" id="email" class="form-control fs-5 rounded-pill"/>
-            </div>
-
-            <div class="pt-3 mb-4 text-center">
-                <button class="fs-5 fw-bold text-light px-4 btn sing-in rounded-pill"type="submit">Registrarme</button>
-            </div>      
-          </form>
-        </div>
+      <div class="text-center">
+        <h3>Registrarse</h3>
       </div>
 
-      <div class="col-sm-6 px-0 d-none d-sm-block py-5">
-        <img src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?w=2000" 
-             alt="Login image" class="w-75 py-5">
-      </div>
-    </div>
-  </div>
+      <div class="p-4">
+        <form action="">
+          <div class="row">
+            <div class="col-md-6 mb-4 text-start mb-3">
+              <label class="form-label fs-4 fw-bold d-none" for="firstName"></label>
+              <input type="text" class="form-control" id="firstName" placeholder="Nombre">
+            </div>
+            <div class="col-md-6 mb-4 text-start mb-3">
+              <label class="form-label fs-4 fw-bold d-none" for="lastName"></label>
+              <input type="text" class="form-control" id="lastName" placeholder="Apellido">
+            </div>
+          </div>
+
+          <div class="mb-4 text-start">
+            <label class="form-label fs-4 fw-bold d-none" for="address"></label>
+            <input type="email" class="form-control" id="address" placeholder="Dirección">
+          </div>
+
+          <div class="mb-4 text-start">
+            <label class="form-label fs-4 fw-bold d-none" for="email"></label>
+            <input type="email" class="form-control" placeholder="Email">
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-4 text-start mb-3">
+              <label class="form-label fs-4 fw-bold d-none" for="password"></label>
+              <input type="password" class="form-control" placeholder="Contraseña">
+            </div>
+            <div class="col-md-6 mb-4 text-start mb-3">
+              <label class="form-label fs-4 fw-bold d-none" for="verifypassword"></label>
+              <input type="verifypassword" class="form-control" placeholder="Repetir contraseña">
+            </div>
+          </div>
+
+          <button class="btn fw-bold text-light sing-up rounded w-100" type="submit">Registrarme</button>
+        
+        </form>
+     </div>
+
+     <span>Ya tenes una cuenta? <a class="fw-bold" routerLink="/singIn">Inicia sesión</a></span>
+   </div>
+ </div>
+</div>          
