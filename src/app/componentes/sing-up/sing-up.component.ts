@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./sing-up.component.css']
 })
 export class SingUpComponent {
-
+  passwordVisible = false;
+  verifyPasswordVisible = false;
 }

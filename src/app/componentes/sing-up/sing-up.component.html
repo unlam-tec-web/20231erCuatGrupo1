@@ -1,51 +1,65 @@
-<div class="container-fluid rounded mt-5">
-  <div class="d-flex justify-content-center rounded">
-    <div class="col-md-4 shadow p-5 bg-white">
+<div class="container-fluid mt-5">
+  <div class="d-flex justify-content-center">
 
+    <!-- Contenedor -->
+    <div class="shadow rounded p-5 bg-white">
       <div class="text-center">
-        <h3>Registrarse</h3>
+        <h2>Registrarse</h2>
       </div>
 
+      <!-- Formulario -->
       <div class="p-4">
-        <form action="">
-          <div class="row">
-            <div class="col-md-6 mb-4 text-start mb-3">
-              <label class="form-label fs-4 fw-bold d-none" for="firstName"></label>
-              <input type="text" class="form-control" id="firstName" placeholder="Nombre">
+        <form>
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <label class="form-label fw-bold d-none" for="firstName"></label>
+              <input type="text" class="form-control p-3" id="firstName" placeholder="Nombre">
             </div>
-            <div class="col-md-6 mb-4 text-start mb-3">
-              <label class="form-label fs-4 fw-bold d-none" for="lastName"></label>
-              <input type="text" class="form-control" id="lastName" placeholder="Apellido">
-            </div>
-          </div>
-
-          <div class="mb-4 text-start">
-            <label class="form-label fs-4 fw-bold d-none" for="address"></label>
-            <input type="email" class="form-control" id="address" placeholder="Dirección">
-          </div>
-
-          <div class="mb-4 text-start">
-            <label class="form-label fs-4 fw-bold d-none" for="email"></label>
-            <input type="email" class="form-control" placeholder="Email">
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-4 text-start mb-3">
-              <label class="form-label fs-4 fw-bold d-none" for="password"></label>
-              <input type="password" class="form-control" placeholder="Contraseña">
-            </div>
-            <div class="col-md-6 mb-4 text-start mb-3">
-              <label class="form-label fs-4 fw-bold d-none" for="verifypassword"></label>
-              <input type="verifypassword" class="form-control" placeholder="Repetir contraseña">
+            <div class="col-md-6">
+              <label class="form-label fw-bold d-none" for="lastName"></label>
+              <input type="text" class="form-control p-3" id="lastName" placeholder="Apellido">
             </div>
           </div>
 
-          <button class="btn fw-bold text-light sing-up rounded w-100" type="submit">Registrarme</button>
-        
+          <div class="mb-4">
+            <label class="form-label fw-bold d-none" for="address"></label>
+            <input type="email" class="form-control p-3" id="address" placeholder="Dirección">
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-bold d-none" for="email"></label>
+            <input type="email" class="form-control p-3" id="email" placeholder="Email">
+          </div>
+          
+          <div class="row mb-4">
+            <div class="col-md-6 form-group">
+              <label class="form-label fw-bold d-none" for="password"></label>
+              <div class="position-relative">
+                <input type="{{ passwordVisible ? 'text' : 'password' }}" class="form-control p-3" id="password" placeholder="Contraseña">
+                <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y" style="right: 10px" type="button" (click)="passwordVisible = !passwordVisible">
+                  <i class="bi" [class.bi-eye]="!passwordVisible" [class.bi-eye-slash]="passwordVisible"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label class="form-label fw-bold d-none" for="verifypassword"></label>
+              <div class="position-relative">
+                <input type="{{ verifyPasswordVisible ? 'text' : 'password' }}" class="form-control p-3" id="verifypassword" placeholder="Repetir contraseña">
+                <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y" style="right: 10px" type="button" (click)="verifyPasswordVisible = !verifyPasswordVisible">
+                  <i class="bi" [class.bi-eye]="!verifyPasswordVisible" [class.bi-eye-slash]="verifyPasswordVisible"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <button class="btn fw-bold text-light sing-up rounded p-3 w-100" type="submit">Registrarme</button>
         </form>
-     </div>
+      </div>
+      <!-- Fin formulario -->
 
-     <span>Ya tenes una cuenta? <a class="fw-bold" routerLink="/singIn">Inicia sesión</a></span>
-   </div>
- </div>
+      <span>Ya tenes una cuenta? <a class="fw-bold" routerLink="/singIn">Inicia sesión</a></span>
+    </div>
+    <!-- Fin contenedor -->
+
+  </div>
 </div>          
