@@ -9,45 +9,84 @@
 
       <!-- Formulario -->
       <div class="p-4">
-        <form>
+        <form [formGroup]="formSingup" (ngSubmit)="onSubmit()">
           <div class="row mb-4">
+
+            <!-- Campo nombre -->
             <div class="col-md-6">
               <label class="form-label fw-bold d-none" for="firstName"></label>
-              <input type="text" class="form-control p-3" id="firstName" placeholder="Nombre">
+              <input type="text" class="form-control p-3" id="firstName" placeholder="Nombre"
+                     formControlName="firstName" [ngClass]="{'is-invalid': firstNameInvalid}">
+              <div *ngIf="firstNameInvalid">
+                <p class="text-danger text-start ps-1 mt-2 mb-0">El nombre es requerido</p>
+              </div>
             </div>
+
+            <!-- Campo Apellido -->
             <div class="col-md-6">
               <label class="form-label fw-bold d-none" for="lastName"></label>
-              <input type="text" class="form-control p-3" id="lastName" placeholder="Apellido">
+              <input type="text" class="form-control p-3" id="lastName" placeholder="Apellido"
+                     formControlName="lastName" [ngClass]="{'is-invalid': lastNameInvalid}">
+              <div *ngIf="lastNameInvalid">
+                <p class="text-danger text-start ps-1 mt-2 mb-0">El Apellido es requerido</p>
+              </div>
             </div>
           </div>
 
           <div class="mb-4">
             <label class="form-label fw-bold d-none" for="address"></label>
-            <input type="email" class="form-control p-3" id="address" placeholder="Dirección">
+            <input type="email" class="form-control p-3" id="address" formControlName="address" placeholder="Dirección">
           </div>
 
           <div class="mb-4">
             <label class="form-label fw-bold d-none" for="email"></label>
-            <input type="email" class="form-control p-3" id="email" placeholder="Email">
+            <input type="email" class="form-control p-3" id="email" formControlName="email" placeholder="Email">
           </div>
           
           <div class="row mb-4">
             <div class="col-md-6 form-group">
               <label class="form-label fw-bold d-none" for="password"></label>
               <div class="position-relative">
-                <input type="{{ passwordVisible ? 'text' : 'password' }}" class="form-control p-3" id="password" placeholder="Contraseña">
-                <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y" style="right: 10px" type="button" (click)="passwordVisible = !passwordVisible">
-                  <i class="bi" [class.bi-eye]="!passwordVisible" [class.bi-eye-slash]="passwordVisible"></i>
-                </button>
+                <!-- Directiva condicional para mostrar la contraseña -->
+                <div *ngIf="!showPassword; then showedPassword else hiddenPassword"></div>
+                <ng-template #showedPassword>
+                  <input type="password" class="form-control p-3" id="password" formControlName="password" placeholder="Contraseña">
+                  <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y"
+                          style="right: 10px" type="button" (click)="passwordVisibility('password')">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </ng-template>
+                <ng-template #hiddenPassword>
+                  <input type="text" class="form-control p-3" id="password" formControlName="password" placeholder="Contraseña">
+                  <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y"
+                          style="right: 10px" type="button" (click)="passwordVisibility('password')">
+                    <i class="bi bi-eye-slash"></i>
+                  </button>
+                </ng-template>
+                <!-- Fin directiva -->
               </div>
             </div>
+
             <div class="col-md-6 form-group">
               <label class="form-label fw-bold d-none" for="verifypassword"></label>
               <div class="position-relative">
-                <input type="{{ verifyPasswordVisible ? 'text' : 'password' }}" class="form-control p-3" id="verifypassword" placeholder="Repetir contraseña">
-                <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y" style="right: 10px" type="button" (click)="verifyPasswordVisible = !verifyPasswordVisible">
-                  <i class="bi" [class.bi-eye]="!verifyPasswordVisible" [class.bi-eye-slash]="verifyPasswordVisible"></i>
-                </button>
+
+                <div *ngIf="!showConfirmPassword; then showedConfirm else hiddenConfirm"></div>
+                <ng-template #showedConfirm>
+                  <input type="password" class="form-control p-3" id="confirmPassword" formControlName="confirmPassword" placeholder="Repetir contraseña">
+                  <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y"
+                          style="right: 10px" type="button" (click)="passwordVisibility('confirmPassword')">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </ng-template>
+                <ng-template #hiddenConfirm>
+                  <input type="text" class="form-control p-3" id="confirmPassword" formControlName="confirmPassword" placeholder="Repetir contraseña">
+                  <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y"
+                          style="right: 10px" type="button" (click)="passwordVisibility('confirmPassword')">
+                    <i class="bi bi-eye-slash"></i>
+                  </button>
+                </ng-template>
+
               </div>
             </div>
           </div>
