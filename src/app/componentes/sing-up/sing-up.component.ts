@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { emailvalidation } from './emailValidation';
+import { Observable, share } from 'rxjs';
+import { FormBuilder, FormControl, AbstractControl, Validators, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-sing-up',
@@ -11,6 +14,25 @@ export class SingUpComponent {
   ngOnInit(): void{
   }
 
+  // Inyección de dependencias
+  constructor(private formBuilder: FormBuilder, 
+              protected httpClient: HttpClient) {}
+
+  // Inicialización de formulario
+  singupForm = this.formBuilder.group({
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, this.passwordFormatValidator]),
+    confirmPassword: new FormControl('', [Validators.required, this.passwordMatchValidator])
+  });
+
+  get f(){
+    return this.singupForm.controls;
+  }
+
+  // Variables y metodo para mostrar contraseña
   showPassword = false;
   showConfirmPassword = false;
 
@@ -22,34 +44,85 @@ export class SingUpComponent {
     }
   }
 
-  formSingup: FormGroup;
+  // Validación formato de contraseña
+  passwordFormatValidator(control: AbstractControl): ValidationErrors | null {
+    let password: string = control.value;
+    let errors: ValidationErrors = {};
 
-  constructor(private formBuilder: FormBuilder) {
-    this.formSingup = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName:  ['', Validators.required],
-      address: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]]
-    });
+    const uppercaseRegex = /[A-Z]/;
+    const lowercaseRegex = /[a-z]/;
+    const digitRegex = /\d/;
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+    if (password) {
+      if (password.length < 13)
+        errors['quantity'] = true;
+      
+      if (!uppercaseRegex.test(password))
+        errors['uppercase'] = true;
+      
+      if(!lowercaseRegex.test(password))
+        errors['lowercase'] = true;
+      
+      if(!digitRegex.test(password))
+        errors['digit'] = true;
+      
+      if(!specialCharRegex.test(password))
+        errors['specialChar'] = true;
+    }
+    
+    if(Object.keys(errors).length > 0)
+      errors['invalidFormat'] = true;
+
+    return errors;
   }
 
-  get firstNameInvalid(): boolean {
-    const control = this.formSingup.controls['firstName'];
-    return control.invalid && control.touched;
-  }
+  // Validación de contraseñas coincidentes
+  passwordMatchValidator(): ValidationErrors | null {
+    let passwordControl = this.singupForm.controls['password'];
+    let confirmPasswordControl = this.singupForm.controls['confirmPassword'];
+  
+    if (passwordControl && confirmPasswordControl) {
+      let password = passwordControl.value;
+      let confirmPassword = confirmPasswordControl.value;
+  
+      if (password !== confirmPassword) {
+        confirmPasswordControl.setErrors({ NoPasswordMatch: true });
+      } else {
+        confirmPasswordControl.setErrors(null);
+      }
+    }
 
-  get lastNameInvalid(): boolean {
-    const control = this.formSingup.controls['lastName'];
-    return control.invalid && control.touched;
+    return null;
   }
+  
+  // Validación de correo a traves de una API
+  emailNotExists = false;
 
   onSubmit() {
 
-    if (this.formSingup.invalid) {
+    if (this.singupForm.invalid) {
       
     }
+
+    const email = this.singupForm.controls['email'];
+
+    let res: Observable<emailvalidation[]> = 
+        this.httpClient.get<emailvalidation[]>("https://emailvalidation.abstractapi.com/v1/?api_key=b7e0590192854e169a7fecbf79323e7d&email=" + email.value)
+        .pipe(share());
+      
+    res.subscribe(
+      value => {
+        if (value[0].deliverability  === 'DELIVERABLE') {
+          this.emailNotExists = false;
+        } else {
+          this.emailNotExists = true;
+        }
+      },
+      error => {
+        console.error('Error al llamar a la API de validación de correo electrónico:', error);
+      }
+    );
 
   }
 
