@@ -1,20 +1,25 @@
+// Modulos
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// Import de componentes de la aplicacion
+// Componentes principales
 import { AppComponent } from './app.component';
-
-import { SingUpComponent } from './componentes/sing-up/sing-up.component';
-import { SingInComponent } from './componentes/sing-in/sing-in.component';
-import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-producto/agregar-nuevo-producto.component';
+import { LayoutComponent } from './layout/layout.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
+
+// Otros componentes
+import { SingUpComponent } from './componentes/sing-up/sing-up.component';
+import { SingInComponent } from './componentes/sing-in/sing-in.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutComponent } from './layout/layout.component';
 import { CarritoDeComprasComponent } from './componentes/carrito-de-compras/carrito-de-compras.component';
+import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-producto/agregar-nuevo-producto.component';
+
+// Servicios
+import { UserService } from './services/usuario.service';
 
 
 @NgModule({
@@ -37,7 +42,7 @@ import { CarritoDeComprasComponent } from './componentes/carrito-de-compras/carr
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
