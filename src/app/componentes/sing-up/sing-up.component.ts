@@ -115,7 +115,8 @@ export class SingUpComponent {
     // Validación de correo repetido
     let user = this.userService.getUserByEmail(this.singupForm.controls.email.value!);
     if(user != null){
-      // aca deberia enviar un error a la vista
+      this.singupForm.controls.email.setErrors({ emailRegistered: true });
+      return;
     }    
 
     // Validación de correo a traves de una API
@@ -127,7 +128,7 @@ export class SingUpComponent {
     res.subscribe(
       value => {
         if (value[0].deliverability != 'DELIVERABLE') {
-        // aca deberia enviar un error a la vista
+          this.singupForm.controls.email.setErrors({ emailNotExists: true });
         }
       },
       error => {
@@ -147,7 +148,5 @@ export class SingUpComponent {
 
     // Registro de nuevo usuario
     this.userService.createUser(this.newUser);
-
   }
-
 }

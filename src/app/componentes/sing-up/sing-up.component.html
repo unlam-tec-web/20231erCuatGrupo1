@@ -14,7 +14,7 @@
 
             <!-- Campo nombre -->
             <div class="col-md-6">
-              <label class="form-label fw-bold d-none" for="firstName"></label>
+              <label class="form-label d-none" for="firstName"></label>
               <input type="text" class="form-control p-3" id="firstName" placeholder="Nombre"
                      formControlName="firstName" [ngClass]="{'is-invalid': f.firstName.invalid && f.firstName.touched}">
               <!-- Mensaje error -->       
@@ -25,7 +25,7 @@
 
             <!-- Campo apellido -->
             <div class="col-md-6">
-              <label class="form-label fw-bold d-none" for="lastName"></label>
+              <label class="form-label d-none" for="lastName"></label>
               <input type="text" class="form-control p-3" id="lastName" placeholder="Apellido"
                      formControlName="lastName" [ngClass]="{'is-invalid': f.lastName.invalid && f.lastName.touched}">
               <!-- Mensaje error -->   
@@ -37,7 +37,7 @@
 
           <!-- Campo direccion -->
           <div class="mb-4">
-            <label class="form-label fw-bold d-none" for="address"></label>
+            <label class="form-label d-none" for="address"></label>
             <input type="email" class="form-control p-3" id="address" placeholder="Dirección"
                    formControlName="address" [ngClass]="{'is-invalid': f.address.invalid && f.address.touched}">
             <!-- Mensaje error -->          
@@ -48,36 +48,37 @@
 
           <!-- Campo email -->
           <div class="mb-4">
-            <label class="form-label fw-bold d-none" for="email"></label>
+            <label class="form-label d-none" for="email"></label>
             <input type="email" class="form-control p-3" id="email" placeholder="Email"
                    formControlName="email" [ngClass]="{'is-invalid': f.email.invalid && f.email.touched}">
-            <!-- Mensaje error -->   
+            <!-- Mensajes de error -->   
             <div *ngIf="f.email.invalid && f.email.touched" class="text-danger text-start">
               <div *ngIf="f.email.errors?.['required']"><p class="ps-1 mt-2 mb-0">El email es requerido</p></div>
               <div *ngIf="f.email.errors?.['email']"><p class="ps-1 mt-2 mb-0">El formato ingresado no es valido</p></div>
-              <div *ngIf="f.email.errors?.['emailnotExist']"><p class="ps-1 mt-2 mb-0">El email ingresado no existe</p></div>
-              <div *ngIf="singupForm.errors?.['emailRegistered']"><p class="ps-1 mt-2 mb-0">El email ingresado ya esta registrado en otra cuenta</p></div>
+              <div *ngIf="f.email.errors?.['emailNotExist']"><p class="ps-1 mt-2 mb-0">El email ingresado no existe</p></div>
+              <div *ngIf="f.email.errors?.['emailRegistered']"><p class="ps-1 mt-2 mb-0">El email ingresado ya esta registrado en otra cuenta</p></div>
             </div>
           </div>
           
           <div class="row mb-4">
             <!-- Campo contraseña -->
             <div class="col-md-6 form-group">
-              <label class="form-label fw-bold d-none" for="password"></label>
+              <label class="form-label d-none" for="password"></label>
               <div class="position-relative">
                 <!-- Directiva para mostrar la contraseña -->
                 <input [type]="showPassword ? 'text' : 'password'" class="form-control p-3" id="password" 
                        [ngClass]="{'border-danger': f.password.invalid && f.password.touched}"
                        formControlName="password" placeholder="Contraseña">
-                <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y"
-                        style="right: 10px" type="button" (click)="passwordVisibility('password')">
-                  <i [class]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
-                </button>
+
+                <i class="position-absolute top-50 translate-middle-y" style="right: 15px" 
+                   [class]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'" 
+                   (click)="passwordVisibility('password')"></i>
               </div>
               <!-- Mensajes de error -->       
               <div *ngIf="f.password.invalid && f.password.touched" class="text-danger text-start">
                 <div *ngIf="f.password.errors?.['required']"><p class="ps-1 mt-2 mb-0">El campo es requerido</p></div>
                 <div *ngIf="f.password.errors?.['invalidFormat']">
+                  <!-- Listado de requisitos para contraseña -->
                   <p class="mt-2 mb-0">La contraseña debe tener :</p>  
                   <ul class="ps-3 mb-0">
                     <li *ngIf="f.password.errors?.['quantity']"><p class="mt-1 mb-0">Mínimo 13 caracteres</p></li>
@@ -92,15 +93,15 @@
 
             <!-- Campo confirmar contraseña -->
             <div class="col-md-6 form-group">
-              <label class="form-label fw-bold d-none" for="confirmPassword"></label>
+              <label class="form-label d-none" for="confirmPassword"></label>
               <div class="position-relative">
                 <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control p-3" id="confirmPassword" 
                        [ngClass]="{'border-danger': f.confirmPassword.invalid && f.confirmPassword.touched}"
                        formControlName="confirmPassword" placeholder="Repetir contraseña">
-                <button class="bg-transparent border-0 position-absolute top-50 translate-middle-y"
-                        style="right: 10px" type="button" (click)="passwordVisibility('confirmPassword')">
-                  <i [class]="showConfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
-                </button>
+                
+                <i class="position-absolute top-50 translate-middle-y" style="right: 15px" 
+                   [class]="showConfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'" 
+                   (click)="passwordVisibility('confirmPassword')"></i>
               </div>
               <!-- Mensaje error -->       
               <div *ngIf="f.confirmPassword.invalid && f.confirmPassword.touched" class="text-danger text-start">
@@ -110,8 +111,8 @@
             </div>
           </div>
           
-          <button class="btn fw-bold text-light sing-up rounded p-3 w-100"
-                  type="submit" [disabled]="singupForm.invalid && singupForm.touched">Registrarme</button>
+          <button type="submit"  class="btn fw-bold text-light sing-up rounded p-3 w-100"
+                  [disabled]="singupForm.invalid && singupForm.touched">Registrarme</button>
         </form>
       </div>
       <!-- Fin formulario -->
