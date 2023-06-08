@@ -10,7 +10,6 @@ import {CarritoDeComprasComponent} from "./componentes/carrito-de-compras/carrit
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: "full"},
-  {path:"layout", component: LayoutComponent},
   {path:"singIn", component: SingInComponent},
   {path:"singUp", component: SingUpComponent},
   {path:"home", component: HomeComponent},

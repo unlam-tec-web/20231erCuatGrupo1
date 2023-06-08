@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
   selector: 'app-formulario',
@@ -9,9 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormularioComponent {
 
 
-  listClasificaciones: Array<any> = ['alimentos', 'juguetes'];
+  listClasificaciones: Array<any> = ['procesador', 'mother', 'placa de video', 'memoria ram', 'gabinete', 'fuente', 'monitor', 'periferico'];
   isMensajeMostrado: boolean = false;
-  archivo!: File;
 
 
   miFormulario: FormGroup = this.fb.group({
@@ -21,11 +21,22 @@ export class FormularioComponent {
     descripcion: this.fb.control('', [Validators.required, Validators.minLength(5)])
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private productoService: ProductoService) {}
 
 
   agregar(){
 
+    const producto = {
+      nombre: this.miFormulario.get("nombre")?.value,
+      clasificacion: this.miFormulario.get("clasificacion")?.value,
+      precio: this.miFormulario.get("precio")?.value,
+      descripcion: this.miFormulario.get("descripcion")?.value,
+      id: this.miFormulario.get("id")?.value
+    };
+
+    this.productoService.agregarProducto(producto).subscribe( res => {
+      this.isMensajeMostrado = true;
+    });
 
     this.miFormulario.reset();
   }
