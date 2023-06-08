@@ -29,7 +29,7 @@ export class CarritoService {
     const product1 = {
       /*EL CAMPO CANTIDAD SE TRANSFORMA EN 1 CUANDO SE AÑADE A CARRITO, COMO NO USO ADDPRODUCTOACARRITO LO TENGO
 QUE PONER MANUALMENTE*/
-      id: 1,
+      id: '1',
       descripcion: '',
       nombre: 'Microprocesador Pc Amd Ryzen 5 4600g 8mb 3.7ghz Socket Am4 100-100000147box 6 Nucleos 12 Hilos',
       precio: 99500,
@@ -39,7 +39,7 @@ QUE PONER MANUALMENTE*/
     };
 
     const product2 = {
-      id: 2,
+      id: '2',
       descripcion: '',
       nombre: 'Tclado gamer Redragon Dragonborn K630 QWERTY Redragon Brown inglés US color negro con luz RGB',
       precio: 21399,
@@ -50,7 +50,7 @@ QUE PONER MANUALMENTE*/
     };
 
     const product3 = {
-      id: 3,
+      id: '3',
       descripcion: '',
       nombre: 'Memoria RAM Basics color verde 16GB 1 Crucial CB16GU2666',
       precio: 22999,

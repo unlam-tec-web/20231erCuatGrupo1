@@ -53,7 +53,7 @@ export class CarritoDeComprasComponent implements OnInit {
 /*CALCULA EL PRECIO DEL CARRITO*/
   calcularPrecioTotal(): void {
     const productos = this.cartService.getCartProductos();
-    this.precioTotalCarrito = productos.reduce((total, item) => total + (item.price * item.quantity), 0);
+    this.precioTotalCarrito = productos.reduce((total, item) => total + (item.precio * item.quantity), 0);
 
   }
 
