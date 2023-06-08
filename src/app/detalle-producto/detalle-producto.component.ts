@@ -54,7 +54,7 @@ export class DetalleProductoComponent implements OnInit{
   }*/
 
   agregarAlCarrito() {
-      this.carritoService.addProducto(this.producto);
+      this.carritoService.addProductoACarrito(this.producto);
   }
 
 

@@ -47,8 +47,8 @@
                       <img [src]="producto.image" class="img-fluid rounded-3" alt="imagen-cart">
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
-                      <h6 class="text-muted">{{ producto.category }}</h6>
-                      <h6 class="text-black mb-0">{{ producto.name }}</h6>
+                      <h6 class="text-muted">{{ producto.clasificacion }}</h6>
+                      <h6 class="text-black mb-0">{{ producto.nombre }}</h6>
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                       <button class="btn btn-link px-2" *ngIf="producto.quantity > 1"
@@ -64,7 +64,7 @@
                       </button>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h6 class="mb-0">$ {{ producto.price * producto.quantity }}</h6>
+                      <h6 class="mb-0">$ {{ producto.precio * producto.quantity }}</h6>
                     </div>
                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                       <a routerLink="/carrito" class="text-muted" (click)="removeDeCarrito(producto.id)"><i
