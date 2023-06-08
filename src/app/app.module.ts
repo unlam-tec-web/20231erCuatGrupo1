@@ -20,6 +20,7 @@ import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-produ
 
 // Servicios
 import { UserService } from './services/usuario.service';
+import {CarritoService} from "./services/carrito.service";
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { UserService } from './services/usuario.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService,
+  CarritoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
