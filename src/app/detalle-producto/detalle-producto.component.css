@@ -1,0 +1,26 @@
+.slow{
+  transition: 0.7s;
+}
+
+.btn-color{
+  color: white;
+  border: 2px solid #4398e7;
+  background-color: #4a92d6;
+  transition: 0.5s;
+}
+
+.btn-color:hover{
+  border: 2px solid #599ad6;
+  background-color: #599ad6;
+  color: #ffffff;
+}
+
+.btn-back{
+  background-color: #3541e9;
+  color: #ffffff;
+}
+
+.btn-back:hover{
+  background-color: #4650df;
+  color: #ffffff;
+}

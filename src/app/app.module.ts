@@ -21,6 +21,7 @@ import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-produ
 // Servicios
 import { UserService } from './services/usuario.service';
 import {CarritoService} from "./services/carrito.service";
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {CarritoService} from "./services/carrito.service";
     NavbarComponent,
     FooterComponent,
     FormularioComponent,
-    LayoutComponent
+    LayoutComponent,
+    DetalleProductoComponent
   ],
   imports: [
     BrowserModule,
