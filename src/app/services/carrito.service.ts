@@ -31,7 +31,8 @@ export class CarritoService {
       name: 'Microprocesador Pc Amd Ryzen 5 4600g 8mb 3.7ghz Socket Am4 100-100000147box 6 Nucleos 12 Hilos',
       price: 99500,
       image: 'https://http2.mlstatic.com/D_NQ_NP_659520-MLM51338788281_082022-O.webp',
-      quantity: 1
+      quantity: 1,
+      category:'Procesador'
     };
 
     const product2 = {
@@ -39,7 +40,8 @@ export class CarritoService {
       name: 'Tclado gamer Redragon Dragonborn K630 QWERTY Redragon Brown inglés US color negro con luz RGB',
       price: 21399,
       image: 'https://http2.mlstatic.com/D_NQ_NP_610174-MLA53970594239_022023-O.webp',
-      quantity: 1
+      quantity: 1,
+      category:'Periferico'
 
     };
 
@@ -48,7 +50,8 @@ export class CarritoService {
       name: 'Memoria RAM Basics color verde 16GB 1 Crucial CB16GU2666',
       price: 22999,
       image: 'https://http2.mlstatic.com/D_NQ_NP_703714-MLA52221527392_102022-O.webp',
-      quantity: 1
+      quantity: 1,
+      category:'Memoria RAM'
 
     };
 
