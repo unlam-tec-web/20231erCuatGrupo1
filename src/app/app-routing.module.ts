@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-producto/agregar-nuevo-producto.component';
-import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { SingInComponent } from './componentes/sing-in/sing-in.component';
 import { SingUpComponent } from './componentes/sing-up/sing-up.component';
 import {CarritoDeComprasComponent} from "./componentes/carrito-de-compras/carrito-de-compras.component";
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 
 const routes: Routes = [
@@ -13,6 +13,7 @@ const routes: Routes = [
   {path:"singIn", component: SingInComponent},
   {path:"singUp", component: SingUpComponent},
   {path:"home", component: HomeComponent},
+  {path:"producto", component: DetalleProductoComponent}, //"producto/:id"
   {path:'carrito', component: CarritoDeComprasComponent},
   {path:"agregarProducto", component:AgregarNuevoProductoComponent},
   {path:"**", redirectTo: "", pathMatch: "full"}
