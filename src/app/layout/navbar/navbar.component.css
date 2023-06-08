@@ -1,5 +1,5 @@
 .navbar{
-  background-color: #3630EA!important;
+  background-color: #3630ea!important;
 }
 
 .sing-in{
@@ -12,3 +12,10 @@
 .sing-in:hover{
   transform: scale(1.1);
 }
+
+a:hover{
+  transform: translateY(-2px);
+  color: #81b6e7!important;
+  transition: 0.5s;
+}
+
