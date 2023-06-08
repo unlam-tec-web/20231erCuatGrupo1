@@ -1,82 +1,110 @@
-<!-- CARRITO TABLAS PARA LOS PRODUCTOS-->
-<div class="container shadow border rounded-5 my-5 py-5">
-  <div class="resumenCompra mx-5">
-    <p class="tituloDeTabla"><em><strong>RESUMEN DE COMPRA</strong></em><span  style="font-family: Bahnschrift"> (3 productos)</span></p>
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th><strong>Producto</strong></th>
-        <th><strong>Cantidad</strong></th>
-        <th><strong>Precio</strong></th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="cart-info">
-        <td>
-          <div class="cart-img">
-            <a href=""> <img src="https://http2.mlstatic.com/D_NQ_NP_795136-MLA43404237050_092020-V.jpg"></a>
-            <div>
-              <a href=""><p class="h5">Gallo de juguete</p></a>
-            </div>
-          </div>
-        </td>
-        <td><input type="number" value="1"></td>
-        <td><p class="h5">$100.000</p></td>
-        <td><a href=""><i class="fa-solid fa-x"></i></a></td>
-      </tr>
-      <tr class="cart-info">
-        <td>
-          <div class="cart-img">
+
+<!--SI NO HAY PRODUCTOS EN EL CARRITO-->
+<section class="h-100 h-custom"  *ngIf="cartProductos.length ==0">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <a routerLink="/carrito" class="text-muted" (click)="preCargarProductos()"><i
+              class="fas fa-plus"></i></a>
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjRl0mbQKsYNR4Gkpxj82PEbajV_ZGmMbGt5Lmkc4cNYtsAg0i_jgJEpw9CfoudTjV_YU&usqp=CAU">
-            <div>
-              <a href=""><p class="h5">Funko Frank Zappa</p></a>
+              src="https://i.ibb.co/Pg4WP7K/7077465.png"
+              class="imgCarritoVacio">
+            <h4>¡Tu carrito se encuentra vacio!</h4>
+            <div class="pb-3" >
+              <h6 class="mb-0"><a href="#!" class="text-body" style="text-decoration: none"><i
+                class="fas fa-long-arrow-alt-left me-2"></i>Agrega los productos que quieras</a></h6>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--SI HAY PRODUCTOS EN EL CARRITO-->
+<section class="h-100 h-custom" *ngIf="cartProductos.length != 0">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="fw-bold mb-0 text-black">Mi Carrito</h1>
+                    <h6 class="mb-0 text-muted">{{ cartProductos.length }} productos</h6>
+                    <a routerLink="/carrito" class="text-muted" (click)="eliminarProductos()"><i
+                      class="fas fa-minus"></i></a>
+                  </div>
+                  <hr class="my-4">
+                  <div *ngFor="let producto of cartProductos"
+                       class="row mb-4 d-flex justify-content-between align-items-center">
+                    <div class="col-md-2 col-lg-2 col-xl-2">
+                      <img [src]="producto.image" class="img-fluid rounded-3" alt="imagen-cart">
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                      <h6 class="text-black mb-0">{{ producto.name }}</h6>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                      <button class="btn btn-link px-2" *ngIf="producto.quantity > 1"
+                              (click)="disminuirCantidad(producto.id)">
+                        <i class="fas fa-minus"></i>
+                      </button>
+
+                      <input id="form1" min="1" name="quantity" [(ngModel)]="producto.quantity" type="number"
+                             class="form-control form-control-sm"/>
+
+                      <button class="btn btn-link px-2" (click)="incrementarCantidad(producto.id)">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                      <h6 class="mb-0">$ {{ producto.price * producto.quantity }}</h6>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                      <a routerLink="/carrito" class="text-muted" (click)="removeDeCarrito(producto.id)"><i
+                        class="fas fa-times"></i></a>
+                    </div>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="pt-5">
+                    <h6 class="mb-0"><a href="#!" class="text-body" style="text-decoration: none"><i
+                      class="fas fa-long-arrow-alt-left me-2"></i>Volver a la tienda</a></h6>
+                  </div>
+                </div>
+              </div>
+              <!--RESUMEN DE COMPRA-->
+              <div class="col-lg-4 bg-grey">
+                <div class="p-5"style="color:white">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1 text-white">RESUMEN</h3>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase text-white">{{ cartProductos.length }} productos</h5>
+                    <h5 class="text-white">$ {{ getTotalCarrito() }}</h5>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-5">
+                    <h5 class="text-uppercase text-white">PRECIO TOTAL</h5>
+                    <h5 class="text-white">$ {{ getTotalCarrito() }}</h5>
+                  </div>
+
+                  <button type="button" class="btn btn-block btn-lg btn-primary button-confi-regis">Registrate
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-
-        </td>
-        <td><input type="number" value="1"></td>
-        <td><p class="h5">$50.000</p></td>
-        <td><a href=""><i class="fa-solid fa-x"></i></a>
-
-      </tr>
-      <tr class="cart-info">
-        <td>
-          <div class="cart-img">
-            <img
-              src="https://media.revistagq.com/photos/6320d611504ebd882c04f41b/master/w_1600%2Cc_limit/Apple-iPhone-14-Pro-iPhone-14-Pro-Max-deep-purple-220907-geo.jpg">
-            <div>
-              <a href=""><p class="h5">Iphone version Salada</p></a>
-            </div>
-          </div>
-
-        </td>
-        <td><input type="number" value="1"></td>
-        <td><p class="h5">$100</p></td>
-        <td><a href=""><i class="fa-solid fa-x"></i></a>
-      </tr>
-      </tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-
-      </tr>
-      <tr class="cart-info">
-        <td></td>
-        <td></td>
-        <td><p class="h4">Total a pagar: $150.100</p></td>
-        <td></td>
-
-      </tr>
-
-    </table>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="boton-carrito-comprar mx-5">
-    <button type="button" class="btn btn-primary">Continuar Compra</button>
-  </div>
-</div>
-
-
+</section>
