@@ -1,0 +1,45 @@
+h5{
+    color: #445EF2;
+}
+
+.circle-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    color: white;
+    border: 2px solid #445EF2;
+    border-radius: 50%;
+    background-color: #445EF2;
+}
+
+.btn-detalle{
+  background-color: #8fbbe4;
+}
+
+.btn-agregar{
+  background-color: #8fbbe4;
+}
+
+button{
+  transition: 0.7s;
+  border-radius: 10px;
+  border-color: rgb(255, 251, 251);
+}
+
+button:hover{
+  transform: translateY(-10px);
+  background-color: #67aae9;
+}
+
+.zoom:hover{
+  transform: scale(1.1);
+  transition: 0.7s;
+  z-index: 1;
+  box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.372);
+}
+
+.zoom{
+  transition: 0.7s;
+}

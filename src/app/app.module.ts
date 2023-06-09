@@ -17,11 +17,13 @@ import { SingInComponent } from './componentes/sing-in/sing-in.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
 import { CarritoDeComprasComponent } from './componentes/carrito-de-compras/carrito-de-compras.component';
 import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-producto/agregar-nuevo-producto.component';
+import { CardComponent } from './componentes/card/card.component';
 
 // Servicios
 import { UserService } from './services/usuario.service';
 import {CarritoService} from "./services/carrito.service";
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { HomeComponent } from './componentes/home/home.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { DetalleProductoComponent } from './detalle-producto/detalle-producto.co
     FooterComponent,
     FormularioComponent,
     LayoutComponent,
-    DetalleProductoComponent
+    DetalleProductoComponent,
+    HomeComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
