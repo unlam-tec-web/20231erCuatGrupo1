@@ -22,16 +22,8 @@ export class ProductoService {
     return this.http.get(`${this.baseUrl}/${id}`)
   }
 
-  eliminarProducto(id: number): Observable<any>{
-    return this.http.delete(`${this.baseUrl}/${id}`);
-  }
-
   agregarProducto(producto: any): Observable<any>{
     return this.http.post(this.baseUrl, producto);
-  }
-
-  modificarProducto(id: number, producto: any): Observable<any>{
-    return this.http.put(`${this.baseUrl}/${id}`, producto);
   }
 
 }

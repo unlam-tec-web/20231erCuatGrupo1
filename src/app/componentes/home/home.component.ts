@@ -24,8 +24,4 @@ export class HomeComponent implements OnInit{
     })
   }
 
-  eliminarCard(id: number){
-    this.listProductos = this.listProductos.filter(producto => producto.id !== id);
-  }
-
 }

@@ -31,15 +31,4 @@ export class CardComponent implements OnInit{
     this.router.navigate(['producto', this.id]);
   }
 
-  eliminarProducto(): void{
-    this.productoService.eliminarProducto(this.id).subscribe(resp =>{
-      console.log(resp);
-    })
-    this.onEliminar.emit(this.id);
-  }
-
-  editarProducto(){
-    this.router.navigate(['editar', this.id]);
-  }
-
 }

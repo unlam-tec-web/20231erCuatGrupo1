@@ -30,18 +30,6 @@ export class ProductoController {
     }
   }
 
-  eliminarProducto = async(req: Request, res: Response) => {
-
-    try{
-      const idAEliminar: number = parseInt(req.params.id);
-      const resultado = await this.productoServicio.eliminarProducto(idAEliminar);
-      res.send(resultado);
-    }catch (e) {
-      res.status(500);
-      res.send({ error: e });
-    }
-  }
-
   getProductoId = async(req: Request, res: Response) => {
     try{
       const idABuscar: number = parseInt(req.params.id);

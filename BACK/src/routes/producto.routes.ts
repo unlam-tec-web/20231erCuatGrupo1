@@ -17,7 +17,6 @@ export default class ProductoRouter{
         this.router.post('/', this.productoController.crearProducto);
         this.router.get('/', this.productoController.getProductos);
         this.router.get('/:id', this.productoController.getProductoId);
-        this.router.delete('/:id', this.productoController.eliminarProducto);
     }
 
 
