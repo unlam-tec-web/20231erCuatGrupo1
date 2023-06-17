@@ -46,10 +46,8 @@
   </div>
 
   <div class="container ">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
+    <div *ngFor="let producto of listProductos" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
+      <app-card [producto]="producto" (onEliminar)="eliminarCard($event)"></app-card>
     </div>
   </div>
 
