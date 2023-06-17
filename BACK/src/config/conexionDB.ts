@@ -6,8 +6,8 @@ import { Producto } from "../entities/Producto";
 export const AppDataSource = new DataSource({
     type:"mysql",
     host:'localhost',
-    username: 'root', 
-    password: 'root',
+    username: 'root',
+    password: '',
     port: 3306,
     database: 'grupo-1',
     entities: [Producto],
