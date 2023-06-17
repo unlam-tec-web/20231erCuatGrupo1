@@ -4,12 +4,12 @@ import { ProductoService } from "../services/producto.service";
 export class ProductoController {
   private productoServicio: ProductoService;
 
-  constructor() {  
+  constructor() {
     this.productoServicio = new ProductoService();
   }
 
   crearProducto = async (req: Request, res: Response) => {
-    try {     
+    try {
       const producto = await this.productoServicio.crearProducto(req)
       res.send(producto);
     } catch (e) {
@@ -42,7 +42,16 @@ export class ProductoController {
     }
   }
 
-
+  getProductoId = async(req: Request, res: Response) => {
+    try{
+      const idABuscar: number = parseInt(req.params.id);
+      const resultado = await this.productoServicio.getProductoId(idABuscar);
+      res.send(resultado);
+    }catch (e) {
+      res.status(500);
+      res.send({ error: e });
+    }
+  }
 
 
 }

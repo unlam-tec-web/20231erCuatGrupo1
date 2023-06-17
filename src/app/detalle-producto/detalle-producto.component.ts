@@ -16,7 +16,6 @@ export class DetalleProductoComponent implements OnInit{
   nombre: string = '';
   precio: number = 0;
   clasificacion: string = '';
-  img: string = "";
 
   constructor(
     private aRoute: ActivatedRoute,
@@ -29,29 +28,20 @@ export class DetalleProductoComponent implements OnInit{
 
   ngOnInit(): void {
     this.getProducto();
+    console.log(this.producto);
+
   }
 
 
-  getProducto(){
-    this.nombre = "Teclado"
-    this.clasificacion = "periferico"
-    this.descripcion = ""
-    this.precio = 8000;
-    this.img = ""
-    this.producto = null;
-  }
-
-  /*
   getProducto() {
     this.productoService.getProducto(this.id).subscribe((producto) => {
       this.nombre = producto.nombre;
       this.clasificacion = producto.clasificacion;
       this.descripcion = producto.descripcion;
       this.precio = producto.precio;
-      this.img = producto.img;
       this.producto = producto;
     });
-  }*/
+  }
 
   agregarAlCarrito() {
       this.carritoService.addProductoACarrito(this.producto);

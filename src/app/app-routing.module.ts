@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:"singIn", component: SingInComponent},
   {path:"singUp", component: SingUpComponent},
   {path:"home", component: HomeComponent},
-  {path:"producto", component: DetalleProductoComponent}, //"producto/:id"
+  {path:"producto/:id", component: DetalleProductoComponent},
   {path:'carrito', component: CarritoDeComprasComponent},
   {path:"agregarProducto", component:AgregarNuevoProductoComponent},
   {path:"**", redirectTo: "", pathMatch: "full"}
