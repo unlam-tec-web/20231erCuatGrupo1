@@ -7,8 +7,8 @@
 /bazel-out
 
 # Node
-/back/node_modules
-/node_modules
+BACK/node_modules/
+FRONT/node_modules/
 npm-debug.log
 yarn-error.log
 
@@ -30,7 +30,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+FRONT/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
@@ -41,3 +41,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
