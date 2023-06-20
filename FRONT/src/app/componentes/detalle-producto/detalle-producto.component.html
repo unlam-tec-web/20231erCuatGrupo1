@@ -51,10 +51,19 @@
 
         <!-- Llamados de acción -->
         <div>
-          <button class="btn btn-now fs-5 px-5 py-3 me-3" 
+          <button class="btn btn-now fs-5 px-5 py-3 me-3"
                   (click)="agregarAlCarrito()">Comprar ahora</button>
-          <button class="btn btn-add fs-5 px-5 py-3" 
+          <button class="btn btn-add fs-5 px-5 py-3"
                   (click)="agregarAlCarrito()">Añadir al carrito</button>
+          <!-- Mensaje de exito -->
+          <div *ngIf="isMensajeMostrado" class="alert alert-success fade show mensajeDeAgregado" role="alert">
+            <div class="d-flex justify-content-between align-items-center">
+              <strong class="text-center flex-grow-1">El producto se agregó al carrito</strong>
+              <a class="text-muted" (click)="eliminarMensaje()"><i class="fas fa-times"></i></a>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>

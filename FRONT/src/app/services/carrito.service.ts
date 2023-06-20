@@ -1,17 +1,20 @@
 import {Injectable} from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoService {
   private cartProductos: any[] = [];
+  private cantidadProductosCarrito: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
 
   constructor() {
     this.loadCartItemsFromLocalStorage();
   }
 
-  /*GUARDO PRODUCTOS AL LOCALSTORAGE (TIENE QUE HABER UN CAMPO EN USUARIO PARA GUARDAR LOS PRODUCTOS
-  DE CARRITO)*/
+  /*GUARDO PRODUCTOS AL LOCALSTORAGE*/
   private saveCartItemsToLocalStorage(): void {
     localStorage.setItem('cartProductos', JSON.stringify(this.cartProductos));
   }
@@ -72,17 +75,21 @@ QUE PONER MANUALMENTE*/
 
   /*AÑADO PRODUCTOS AL CARRITO*/
   addProductoACarrito(product: any) {
-    const productoExistente = this.cartProductos.find(item => item.id === product.id);
+    /* const productoExistente = this.cartProductos.find(item => item.id === product.id);
 
-    if (productoExistente) {
-      productoExistente.quantity++;
-    } else {
-      /*PONGO EL VALOR DE CANTIDAD EN 1, CUANDO SE ENFECTUA LA COMPRA RESTO ESTE VALOR AL QUE SE LE ENCUENTRA EN LA BASE
-      * DE DATOS DEL MISMO PRODUCTO*/
-      product.quantity = 1;
-      this.cartProductos.push(product);
-    }
+     if (productoExistente) {
+       productoExistente.quantity++;
+     } else {
+       /!*PONGO EL VALOR DE CANTIDAD EN 1, CUANDO SE ENFECTUA LA COMPRA RESTO ESTE VALOR AL QUE SE LE ENCUENTRA EN LA BASE
+       * DE DATOS DEL MISMO PRODUCTO*!/
+       product.quantity = 1;*/
+    this.cartProductos.push(product);
+    /*
+        }
+    */
     this.saveCartItemsToLocalStorage();
+    this.cantidadProductosCarrito.next(this.cartProductos.length);
+
   }
 
   /*REMUEVO PRODUCTOS DEL CARRITO*/
@@ -92,6 +99,8 @@ QUE PONER MANUALMENTE*/
     if (itemIndex !== -1) {
       this.cartProductos.splice(itemIndex, 1);
       this.saveCartItemsToLocalStorage();
+      this.cantidadProductosCarrito.next(this.cartProductos.length);
+
 
     }
   }
@@ -124,6 +133,11 @@ QUE PONER MANUALMENTE*/
     }
   }
 
+  getCantidadProductosCarrito(): BehaviorSubject<number> {
+    return this.cantidadProductosCarrito;
+  }
+
+  /*ELIMINA TODOS LOS PRODUCTOS*/
   eliminarTodosLosProductos() {
     while (this.cartProductos.length > 0) {
       const productId = this.cartProductos[0].id;

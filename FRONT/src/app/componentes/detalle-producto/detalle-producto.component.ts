@@ -10,6 +10,8 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class DetalleProductoComponent implements OnInit{
 
+  isMensajeMostrado: boolean = false;
+
   producto: any = "";
   id: number = 0;
   descripcion: string = '';
@@ -45,6 +47,11 @@ export class DetalleProductoComponent implements OnInit{
 
   agregarAlCarrito() {
       this.carritoService.addProductoACarrito(this.producto);
+      this.isMensajeMostrado = true;
+
+  }
+  eliminarMensaje(){
+    this.isMensajeMostrado = false;
   }
 
 }

@@ -14,50 +14,58 @@ export class CarritoDeComprasComponent implements OnInit {
   cartProductos!: any[];
   precioTotalCarrito: number = 0;
 
+
   // Inyección de dependencias
   constructor(private cartService: CarritoService) {
   }
-/*METODO QUE SE EJECUTA AL INICIO DEL COMPONENTE*/
+
+  /*METODO QUE SE EJECUTA AL INICIO DEL COMPONENTE*/
   ngOnInit() {
     this.cargarProductosCarrito();
   }
+
   /*INSERTO  PRODUCTOS PRECARGADOS AL CARRITO DESDE EL SERVICE*/
-  preCargarProductos(){
+  preCargarProductos() {
     this.cartService.precargaDeProductos();
   }
-/* DEVUELVE LOS PRODUCTOS EN CARRITO*/
+
+  /* DEVUELVE LOS PRODUCTOS EN CARRITO*/
   cargarProductosCarrito() {
     this.cartProductos = this.cartService.getCartProductos();
   }
-/*INCREMENTA LA CANTIDAD DE UN PRODUCTO*/
+
+  /*INCREMENTA LA CANTIDAD DE UN PRODUCTO*/
   incrementarCantidad(id: number) {
     this.cartService.incrementarCantidad(id);
     this.calcularPrecioTotal();
   }
-  /*DISMINUYE LA CANTIDAD DE UN PRODUCTO*/
 
+  /*DISMINUYE LA CANTIDAD DE UN PRODUCTO*/
   disminuirCantidad(id: number) {
     this.cartService.disminuirCantidad(id);
     this.calcularPrecioTotal();
   }
-  /*ELIMINA UN PRODUCTO UN PRODUCTO*/
+
+  /*ELIMINA UN PRODUCTO*/
   removeDeCarrito(id: number) {
     this.cartService.removeDeCarrito(id);
     this.calcularPrecioTotal();
   }
-/*DEVUELVE EL PRECIO TOTAL DEL CARRITO*/
+
+  /*DEVUELVE EL PRECIO TOTAL DEL CARRITO*/
   getTotalCarrito() {
     this.calcularPrecioTotal();
     return this.precioTotalCarrito;
   }
-/*CALCULA EL PRECIO DEL CARRITO*/
+
+  /*CALCULA EL PRECIO DEL CARRITO*/
   calcularPrecioTotal(): void {
     const productos = this.cartService.getCartProductos();
-    this.precioTotalCarrito = productos.reduce((total, item) => total + (item.precio * item.quantity), 0);
+    this.precioTotalCarrito = productos.reduce((total, item) => total + item.precio, 0);
 
   }
 
-  eliminarProductos(){
+  eliminarProductos() {
     this.cartService.eliminarTodosLosProductos();
   }
 }

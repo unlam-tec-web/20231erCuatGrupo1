@@ -8,6 +8,22 @@
   color: #3630EA!important;
   transition: 0.5s;
 }
+.button-carrito{
+  border: 2px solid white!important;
+  background-color: white!important;
+  color: #3630EA!important;
+}
+.cantidadEnCarrito {
+  color: white;
+  font-size: 0.8em;
+  position: absolute;
+  top: 2px;
+  right: 175px;
+  background-color: red;
+  padding: 0px 7px;
+  margin-top: 5px;
+  border-radius: 10px;
+}
 
 .sing-in:hover{
   transform: scale(1.1);
