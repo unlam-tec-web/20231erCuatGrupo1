@@ -1,92 +1,90 @@
-<div class="album">
+<!-- Banner -->
+<div>
+  <img class="w-100" src="https://smarts.com.ar/media/wysiwyg/slidershow/SetupGamer_1920x640.jpg">
+</div>
 
-  <!-- Banner -->
-  <div>
-    <img class="w-100" src="https://smarts.com.ar/media/wysiwyg/slidershow/SetupGamer_1920x640.jpg">
-  </div>
-
-  <!-- Caracteristicas -->
-  <div class="container rounded bg-white my-5 py-3">
-    <div class="row flex-nowrap">
-      <div class="col-lg-3 px-5">
-        <div class="circle-icon m-auto p-4 mb-2">
-          <i class="bi bi-credit-card fs-3"></i>
-        </div>
-        <h5 class="mb-1">MercadoPago</h5>
-        <p class="fw-light mb-0">Paga en hasta 6 cuotas sin intéres.</p>
+<!-- Caracteristicas -->
+<div class="container rounded bg-white my-5 py-3">
+  <div class="row flex-nowrap">
+    <div class="col-lg-3 px-5">
+      <div class="circle-icon m-auto p-4 mb-2">
+        <i class="bi bi-credit-card fs-3"></i>
       </div>
+      <h5 class="mb-1">MercadoPago</h5>
+      <p class="fw-light mb-0">Paga en hasta 6 cuotas sin intéres.</p>
+    </div>
 
-      <div class="vr px-0 opacity-100"></div>
+    <div class="vr px-0 opacity-100"></div>
 
-      <div class="col-lg-3 px-5">
-        <div class="circle-icon m-auto p-4 mb-2">
-          <i class="bi bi-truck fs-3"></i>
-        </div>
-        <h5 class="mb-1">Envios</h5>
-        <p class="fw-light mb-0">Enviamos con logística propia y con Oca.</p>
+    <div class="col-lg-3 px-5">
+      <div class="circle-icon m-auto p-4 mb-2">
+        <i class="bi bi-truck fs-3"></i>
       </div>
+      <h5 class="mb-1">Envios</h5>
+      <p class="fw-light mb-0">Enviamos con logística propia y con Oca.</p>
+    </div>
 
-      <div class="vr px-0 opacity-100"></div>
+    <div class="vr px-0 opacity-100"></div>
 
-      <div class="col-lg-3 px-5">
-        <div class="circle-icon m-auto p-4 mb-2">
-          <i class="bi bi-whatsapp fs-3"></i>
-        </div>
-        <h5 class="mb-1">Whatsapp</h5>
-        <p class="fw-light mb-0">Te asesoramos de forma personalizada.</p>
+    <div class="col-lg-3 px-5">
+      <div class="circle-icon m-auto p-4 mb-2">
+        <i class="bi bi-whatsapp fs-3"></i>
       </div>
+      <h5 class="mb-1">Whatsapp</h5>
+      <p class="fw-light mb-0">Te asesoramos de forma personalizada.</p>
+    </div>
 
-      <div class="vr px-0 opacity-100"></div>
+    <div class="vr px-0 opacity-100"></div>
 
-      <div class="col-lg-3 px-5">
-        <div class="circle-icon m-auto p-4 mb-2">
-          <i class="bi bi-currency-dollar fs-3"></i>
-        </div>
-        <h5 class="mb-1">Precios</h5>
-        <p class="fw-light mb-0">Somos lideres en las mejores marcas.</p>
+    <div class="col-lg-3 px-5">
+      <div class="circle-icon m-auto p-4 mb-2">
+        <i class="bi bi-currency-dollar fs-3"></i>
       </div>
+      <h5 class="mb-1">Precios</h5>
+      <p class="fw-light mb-0">Somos lideres en las mejores marcas.</p>
     </div>
   </div>
+</div>
 
-  <!-- Listado marcas -->
-  <div class="container mt-5">
-    <h3 class="text-start">¡Las mejores marcas!</h3>
-    <hr>
-    <div class="row row-cols-1 row-cols-md-5 mt-2 g-3">
-      <div *ngFor="let marca of listMarcas">
-        <app-card-marca [marca]="marca"></app-card-marca>
-      </div>
+<!-- Listado marcas -->
+<div class="container mt-5">
+  <h3 class="text-start">¡Las mejores marcas!</h3>
+  <hr>
+  <div class="row row-cols-1 row-cols-md-5 mt-2 g-3">
+    <div *ngFor="let marca of listMarcas">
+      <app-card-marca [marca]="marca"></app-card-marca>
     </div>
   </div>
+</div>
 
-  <!-- Imagen Rtx -->
-  <div class="container mt-5">
-    <img class="img-fluid w-100" src="assets/img/intel.png">
-  </div>
+<!-- Imagen Rtx -->
+<div class="container mt-5">
+  <img class="img-fluid w-100" src="assets/img/intel.png">
+</div>
 
-  <!-- Listado categorias -->
-  <div class="container mt-5">
-    <h3 class="text-start">¡Explora nuestra tienda!</h3>
-    <hr>
-    <div class="row row-cols-1 row-cols-md-4 mt-2 g-3">
-      <div *ngFor="let categoria of listCategorias">
-        <app-card-categoria [categoria]="categoria"></app-card-categoria>
-      </div>
+<!-- Listado categorias -->
+<div class="container mt-5">
+  <h3 class="text-start">¡Explora nuestra tienda!</h3>
+  <hr>
+  <div class="row row-cols-1 row-cols-md-4 mt-2 g-3">
+    <div *ngFor="let categoria of listCategorias">
+      <app-card-categoria [categoria]="categoria"></app-card-categoria>
     </div>
   </div>
+</div>
 
-  <!-- Imagen Palit -->
-  <div class="container mt-5">
-    <img class="img-fluid w-100" src="assets/img/rtx.jpeg">
-  </div>
+<!-- Imagen Palit -->
+<div class="container mt-5">
+  <img class="img-fluid w-100" src="assets/img/rtx.jpeg">
+</div>
 
-  <!-- Ultimos productos -->
-  <div class="container mt-5">
-    <h3 class="text-start">¡Últimos ingresos!</h3>
-    <hr>
-    <div class="row row-cols-1 row-cols-md-4 mt-2 g-3">
-      <div *ngFor="let producto of listProductos">
-        <app-card-product [producto]="producto"></app-card-product>
-      </div>
+<!-- Ultimos productos -->
+<div class="container mt-5">
+  <h3 class="text-start">¡Últimos ingresos!</h3>
+  <hr>
+  <div class="row row-cols-1 row-cols-md-4 mt-2 g-3">
+    <div *ngFor="let producto of listProductos">
+      <app-card-product [producto]="producto"></app-card-product>
     </div>
   </div>
+</div>
