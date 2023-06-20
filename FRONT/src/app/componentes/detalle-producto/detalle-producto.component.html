@@ -1,30 +1,65 @@
-<div class="container mt-4">
-  <div class="col-lg-8 offset-lg-2">
-    <div class="card animated fadeIn" style="width: 25rem; margin: 0 auto">
-      <div class="card-body text-center">
-        <h5 class="card-title">{{ nombre }}</h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Precio: ${{ precio }}</li>
-          <li class="list-group-item">Clasificacion: {{ clasificacion }}</li>
-          <li class="list-group-item">Descripcion: {{ descripcion }}</li>
-        </ul>
-      </div>
-      <div class="container">
-        <div class="row mt-3 mb-3">
-          <div class="col">
-            <button
-              class="btn btn-color slow mt-4"
-              (click)="agregarAlCarrito()"
-            >
-              Agregar al carrito <i class="bi bi-cart-plus"></i>
-            </button>
-          </div>
+<div class="container my-5">
+
+  <!-- Tarjeta de producto -->
+  <div class="detail-container">
+    <div class="row">
+
+      <!-- Contenedor izquierdo -->
+      <div class="col-lg-6 pe-4">
+
+        <!-- Imagen de producto -->
+        <div class="text-center shadow-sm rounded bg-white">
+          <img alt="producto" class="img-responsive rounded" width="80%" height="600px">
+        </div>
+
+        <!-- Descripcion del producto -->
+        <div class="text-start shadow-sm rounded bg-white mt-5 p-5">
+          <h3>Descripción del producto</h3>
+          <hr class="border mt-3 mb-4 opacity-100">
+          <p>{{ descripcion }}</p>
         </div>
       </div>
 
-      <button class="btn btn-back slow m-2" routerLink="/">
-        Volver a lista de productos
-      </button>
+      <!-- Contenedor derecho -->
+      <div class="col-lg-6 shadow-sm rounded bg-white p-5">
+
+        <!-- Información de producto -->
+        <div class='text-start'>
+          <h2 class="fs-1">{{ nombre }}</h2>
+          <p class="text-muted">{{ clasificacion }} > {{ clasificacion }}</p>
+        </div>
+
+        <hr class="border mt-3 mb-5 opacity-100">
+
+        <div class="text-start">
+          <span class="rounded p-4 price">
+            <span class='fs-5'>Precio: </span>
+            <span class="fs-4 fw-bold">{{ precio }}</span>
+          </span>
+        </div>
+
+        <hr class="border mt-5 opacity-100">
+
+        <!-- Iconos -->
+        <div class="text-start icons fs-6">
+          <span class="d-block mb-2"><i class="bi bi-shield-check fs-4 pe-3"></i>Garantía 6 meses</span>
+          <span class="d-block mb-2"><i class="bi bi-check-lg fs-4 pe-3"></i>Stock disponible</span>
+          <span class="d-block mb-2"><i class="bi bi-truck fs-4 pe-3"></i>Envío a todo el pais</span>
+        </div>
+
+        <hr class="border my-4 opacity-100">
+
+        <!-- Llamados de acción -->
+        <div>
+          <button class="btn btn-now fs-5 px-5 py-3 me-3" 
+                  (click)="agregarAlCarrito()">Comprar ahora</button>
+          <button class="btn btn-add fs-5 px-5 py-3" 
+                  (click)="agregarAlCarrito()">Añadir al carrito</button>
+        </div>
+      </div>
     </div>
+
   </div>
+  <!-- Fin tarjeta de producto -->
+
 </div>

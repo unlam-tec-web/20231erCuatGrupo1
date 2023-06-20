@@ -14,7 +14,7 @@ export class DetalleProductoComponent implements OnInit{
   id: number = 0;
   descripcion: string = '';
   nombre: string = '';
-  precio: number = 0;
+  precio: string = '';
   clasificacion: string = '';
 
   constructor(
@@ -26,19 +26,19 @@ export class DetalleProductoComponent implements OnInit{
     this.id = +this.aRoute.snapshot.paramMap.get('id')!;
   }
 
+  formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS'});
+
   ngOnInit(): void {
     this.getProducto();
     console.log(this.producto);
-
   }
-
 
   getProducto() {
     this.productoService.getProducto(this.id).subscribe((producto) => {
       this.nombre = producto.nombre;
       this.clasificacion = producto.clasificacion;
       this.descripcion = producto.descripcion;
-      this.precio = producto.precio;
+      this.precio = this.formatter.format(producto.precio);
       this.producto = producto;
     });
   }
@@ -46,6 +46,5 @@ export class DetalleProductoComponent implements OnInit{
   agregarAlCarrito() {
       this.carritoService.addProductoACarrito(this.producto);
   }
-
 
 }

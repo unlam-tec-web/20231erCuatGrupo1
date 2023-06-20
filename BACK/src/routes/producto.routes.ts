@@ -19,12 +19,12 @@ export default class ProductoRouter{
     public iniciar(express: any){
         this.router = express.Router();
 
+        this.router.get('/marca', this.marcaController.getMarcas);
+        this.router.get('/categoria', this.categoriaController.getCategorias);
+
         this.router.post('/', this.productoController.crearProducto);
         this.router.get('/', this.productoController.getProductos);
         this.router.get('/:id', this.productoController.getProductoId);
-
-        this.router.get('/marca', this.marcaController.getMarcas);
-        this.router.get('/categoria', this.categoriaController.getCategorias);
     }
 
     public obtenerRutas(){
