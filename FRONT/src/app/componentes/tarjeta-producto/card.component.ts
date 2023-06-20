@@ -3,28 +3,29 @@ import { Router } from '@angular/router';
 import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-card-product',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit{
 
   @Input()
-  producto:any;
-  precio: number = 0;
+  producto: any;
+  precio: string = "";
   nombre: string = "";
   id: number = 0;
+  
   @Output()
   onEliminar: EventEmitter <number> = new EventEmitter();
 
-  constructor(private router: Router, private productoService: ProductoService){
-  }
+  constructor(private router: Router, private productoService: ProductoService){}
+
+  formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS'});
 
   ngOnInit(): void {
     this.nombre = this.producto.nombre;
     this.id = this.producto.id;
-    this.precio = this.producto.precio;
-
+    this.precio = this.formatter.format(this.producto.precio);
   }
 
   verDetalleProducto(): void{

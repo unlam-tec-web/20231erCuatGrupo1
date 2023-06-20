@@ -12,34 +12,35 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
 // Otros componentes
-import { SingUpComponent } from './componentes/sing-up/sing-up.component';
-import { SingInComponent } from './componentes/sing-in/sing-in.component';
-import { FormularioComponent } from './componentes/formulario/formulario.component';
+import { HomeComponent } from './componentes/inicio/home.component';
+import { SingUpComponent } from './componentes/registrar-usuario/sing-up.component';
+import { SingInComponent } from './componentes/iniciar-sesion/sing-in.component';
+import { CardComponent } from './componentes/tarjeta-producto/card.component';
+import { MarcaComponent } from './componentes/tarjeta-marca/marca.component';
+import { CategoriaComponent } from './componentes/tarjeta-categoria/categoria.component';
+import { DetalleProductoComponent } from './componentes/detalle-producto/detalle-producto.component';
+import { AgregarProductoComponent } from './componentes/agregar-producto/formulario.component';
 import { CarritoDeComprasComponent } from './componentes/carrito-de-compras/carrito-de-compras.component';
-import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-producto/agregar-nuevo-producto.component';
-import { CardComponent } from './componentes/card/card.component';
 
 // Servicios
 import { UserService } from './services/usuario.service';
-import {CarritoService} from "./services/carrito.service";
-import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
-import { HomeComponent } from './componentes/home/home.component';
-
+import { CarritoService } from "./services/carrito.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     SingInComponent,
     SingUpComponent,
-    AgregarNuevoProductoComponent,
+    AgregarProductoComponent,
     CarritoDeComprasComponent,
     NavbarComponent,
     FooterComponent,
-    FormularioComponent,
     LayoutComponent,
     DetalleProductoComponent,
     HomeComponent,
-    CardComponent
+    CardComponent,
+    MarcaComponent,
+    CategoriaComponent
   ],
   imports: [
     BrowserModule,

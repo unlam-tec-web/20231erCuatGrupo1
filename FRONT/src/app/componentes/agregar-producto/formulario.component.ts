@@ -7,12 +7,10 @@ import { ProductoService } from 'src/app/services/producto.service';
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
-export class FormularioComponent {
-
+export class AgregarProductoComponent {
 
   listClasificaciones: Array<any> = ['procesador', 'mother', 'placa de video', 'memoria ram', 'gabinete', 'fuente', 'monitor', 'periferico'];
   isMensajeMostrado: boolean = false;
-
 
   miFormulario: FormGroup = this.fb.group({
     nombre: this.fb.control('', [Validators.required, Validators.minLength(5)]),
@@ -23,9 +21,7 @@ export class FormularioComponent {
 
   constructor(private fb: FormBuilder, private productoService: ProductoService) {}
 
-
   agregar(){
-
     const producto = {
       nombre: this.miFormulario.get("nombre")?.value,
       clasificacion: this.miFormulario.get("clasificacion")?.value,
@@ -41,10 +37,8 @@ export class FormularioComponent {
     this.miFormulario.reset();
   }
 
-
   eliminarMensaje(){
     this.isMensajeMostrado = false;
   }
-
 
 }

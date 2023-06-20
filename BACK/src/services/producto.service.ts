@@ -1,9 +1,6 @@
-
 import { Producto } from '../entities/Producto';
 
-
 export class ProductoService{
-
 
     getProductos = async(req: any) => {
         const productos = await Producto.find();
@@ -11,7 +8,6 @@ export class ProductoService{
     }
 
     crearProducto = async (req: any) => {
-
         const {nombre, descripcion, precio, clasificacion} = req.body;
 
         const producto = new Producto();
@@ -21,7 +17,6 @@ export class ProductoService{
         producto.clasificacion = clasificacion;
 
         await producto!.save();
-
 
         return producto;
     }

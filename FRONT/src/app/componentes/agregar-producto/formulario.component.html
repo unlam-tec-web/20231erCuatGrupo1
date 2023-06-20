@@ -1,0 +1,56 @@
+<div class="container">
+  <h2 class="text-start fs-1 my-5">Ingreso de nuevo producto</h2>
+
+  <!-- Mensaje de exito -->
+  <div *ngIf="isMensajeMostrado" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>El producto se agrego correctamente.</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="eliminarMensaje()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!-- Formulario -->
+  <form [formGroup]="miFormulario" (ngSubmit)="agregar()" 
+        class="row container" enctype="multipart/form-data" autocomplete="off">
+
+    <div class="col-4">
+      <input class="form-control p-3 mb-3" type="file">
+      <div>
+        
+      </div>
+    </div>
+
+    <div class="col-8">
+      <div>
+        <label class="form-label d-none" for="nombre">Nombre</label>
+        <input formControlName="nombre" id="nombre" class="form-control p-3 mb-3 w-50" type="text"
+          placeholder="Nombre del producto" />
+      </div>
+
+      <div>
+        <label class="form-label d-none" for="precio">Precio</label>
+        <input formControlName="precio" id="precio" class="form-control p-3 mb-3 w-50" type="number" />
+      </div>
+
+      <div>
+        <label class="form-label d-none" for="clasificacion">Clasificación</label>
+        <select formControlName="clasificacion" id="clasificacion" class="form-control p-3 mb-3 w-50">
+          <option value="">Selecciona una categoría</option>
+          <option *ngFor="let clasificacion of listClasificaciones" [value]="clasificacion">
+            {{ clasificacion }}
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label class="form-label d-none" for="descripcion">Descripción</label>
+        <textarea formControlName="descripcion" id="descripcion" type="text"
+                  class="form-control p-3 mb-3" placeholder="Descripción"></textarea>
+      </div>
+
+      <div>
+        <button class="btn btn-color p-3 mt-4 w-25" type="submit">Agregar Producto</button>
+      </div>
+    </div>
+  </form>
+</div>

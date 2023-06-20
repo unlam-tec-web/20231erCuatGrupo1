@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AgregarNuevoProductoComponent } from './componentes/agregar-nuevo-producto/agregar-nuevo-producto.component';
-import { HomeComponent } from './componentes/home/home.component';
-import { SingInComponent } from './componentes/sing-in/sing-in.component';
-import { SingUpComponent } from './componentes/sing-up/sing-up.component';
-import {CarritoDeComprasComponent} from "./componentes/carrito-de-compras/carrito-de-compras.component";
-import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
-
+import { HomeComponent } from './componentes/inicio/home.component';
+import { SingInComponent } from './componentes/iniciar-sesion/sing-in.component';
+import { SingUpComponent } from './componentes/registrar-usuario/sing-up.component';
+import { DetalleProductoComponent } from './componentes/detalle-producto/detalle-producto.component';
+import { AgregarProductoComponent } from './componentes/agregar-producto/formulario.component';
+import { CarritoDeComprasComponent } from "./componentes/carrito-de-compras/carrito-de-compras.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: "full"},
@@ -15,7 +14,7 @@ const routes: Routes = [
   {path:"home", component: HomeComponent},
   {path:"producto/:id", component: DetalleProductoComponent},
   {path:'carrito', component: CarritoDeComprasComponent},
-  {path:"agregarProducto", component:AgregarNuevoProductoComponent},
+  {path:"agregarProducto", component:AgregarProductoComponent},
   {path:"**", redirectTo: "", pathMatch: "full"}
 ];
 

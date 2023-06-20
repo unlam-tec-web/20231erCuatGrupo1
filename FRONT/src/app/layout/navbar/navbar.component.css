@@ -12,10 +12,3 @@
 .sing-in:hover{
   transform: scale(1.1);
 }
-
-a:hover{
-  transform: translateY(-2px);
-  color: #bdd8f1!important;
-  transition: 0.5s;
-}
-
