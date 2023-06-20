@@ -48,7 +48,7 @@
 
 <!-- Listado marcas -->
 <div class="container mt-5">
-  <h3 class="text-start">¡Las mejores marcas!</h3>
+  <h2 class="text-start">¡Las mejores marcas!</h2>
   <hr>
   <div class="row row-cols-1 row-cols-md-5 mt-2 g-3">
     <div *ngFor="let marca of listMarcas">
@@ -57,30 +57,30 @@
   </div>
 </div>
 
-<!-- Imagen Rtx -->
+<!-- Imagen Intel -->
 <div class="container mt-5">
-  <img class="img-fluid w-100" src="assets/img/intel.png">
+  <img class="intel img-fluid rounded w-100" src="assets/img/intel.png">
 </div>
 
 <!-- Listado categorias -->
 <div class="container mt-5">
-  <h3 class="text-start">¡Explora nuestra tienda!</h3>
+  <h2 class="text-start">¡Explora nuestra tienda!</h2>
   <hr>
-  <div class="row row-cols-1 row-cols-md-4 mt-2 g-3">
+  <div class="row row-cols-1 row-cols-md-6 mt-2 g-3">
     <div *ngFor="let categoria of listCategorias">
       <app-card-categoria [categoria]="categoria"></app-card-categoria>
     </div>
   </div>
 </div>
 
-<!-- Imagen Palit -->
+<!-- Imagen Rtx -->
 <div class="container mt-5">
-  <img class="img-fluid w-100" src="assets/img/rtx.jpeg">
+  <img class="rtx img-fluid rounded w-100" src="assets/img/rtx.jpeg">
 </div>
 
 <!-- Ultimos productos -->
-<div class="container mt-5">
-  <h3 class="text-start">¡Últimos ingresos!</h3>
+<div class="container mt-5 mb-5">
+  <h2 class="text-start">¡Últimos ingresos!</h2>
   <hr>
   <div class="row row-cols-1 row-cols-md-4 mt-2 g-3">
     <div *ngFor="let producto of listProductos">

@@ -13,3 +13,11 @@ h5{
     border-radius: 50%;
     background-color: #445EF2;
 }
+
+.intel{
+    box-shadow: 0px 20px 50px -20px #113A8C;
+}
+
+.rtx{
+    box-shadow: 0px 20px 50px -20px #72A603;
+}
