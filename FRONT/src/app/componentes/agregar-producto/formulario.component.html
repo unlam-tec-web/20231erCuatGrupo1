@@ -13,44 +13,58 @@
   <form [formGroup]="miFormulario" (ngSubmit)="agregar()" 
         class="row container" enctype="multipart/form-data" autocomplete="off">
 
-    <div class="col-4">
-      <input class="form-control p-3 mb-3" type="file">
-      <div>
-        
+    <!-- Contenedor izquierdo -->
+    <div class="col-6 shadow-sm rounded bg-white p-5">
+      <div class="text-start">
+        <label class="form-label fs-4" for="imagen">Imagen</label>
+        <input class="form-control p-3 mb-3" id="imagen" type="file">
       </div>
-    </div>
 
-    <div class="col-8">
-      <div>
-        <label class="form-label d-none" for="nombre">Nombre</label>
-        <input formControlName="nombre" id="nombre" class="form-control p-3 mb-3 w-50" type="text"
+      <div class="text-start">
+        <label class="form-label fs-4" for="nombre">Nombre</label>
+        <input formControlName="nombre" id="nombre" class="form-control p-3 mb-3" type="text"
           placeholder="Nombre del producto" />
       </div>
 
-      <div>
-        <label class="form-label d-none" for="precio">Precio</label>
-        <input formControlName="precio" id="precio" class="form-control p-3 mb-3 w-50" type="number" />
+      <div class="row mb-3">
+        <div class="col-6 text-start">
+          <label class="form-label fs-4" for="marca">Marca</label>
+          <select formControlName="clasificacion" id="marca" class="form-control p-3">
+            <option value="">Selecciona una marca</option>
+            <option *ngFor="let marca of listClasificaciones" [value]="marca">
+              {{ marca }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-6 text-start">
+          <label class="form-label fs-4" for="clasificacion">Clasificación</label>
+          <select formControlName="clasificacion" id="clasificacion" class="form-control p-3">
+            <option value="">Selecciona una categoría</option>
+            <option *ngFor="let clasificacion of listClasificaciones" [value]="clasificacion">
+              {{ clasificacion }}
+            </option>
+          </select>
+        </div>
       </div>
 
-      <div>
-        <label class="form-label d-none" for="clasificacion">Clasificación</label>
-        <select formControlName="clasificacion" id="clasificacion" class="form-control p-3 mb-3 w-50">
-          <option value="">Selecciona una categoría</option>
-          <option *ngFor="let clasificacion of listClasificaciones" [value]="clasificacion">
-            {{ clasificacion }}
-          </option>
-        </select>
+      <div class="text-start mb-3">
+        <label class="form-label fs-4" for="precio">Precio</label>
+        <input formControlName="precio" id="precio" class="form-control p-3" type="number"/>
       </div>
+    </div>
+    
+    <!-- Contenedor derecho -->
+    <div class="col-6 px-5">
+      <div class="text-start">
+        <label class="form-label fs-4" for="descripcion">Descripción detallada</label>
+        <textarea formControlName="descripcion" id="descripcion" class="form-control p-3"
+                  placeholder="Descripción"></textarea>
+      </div>
+    </div>
 
-      <div>
-        <label class="form-label d-none" for="descripcion">Descripción</label>
-        <textarea formControlName="descripcion" id="descripcion" type="text"
-                  class="form-control p-3 mb-3" placeholder="Descripción"></textarea>
-      </div>
-
-      <div>
-        <button class="btn btn-color p-3 mt-4 w-25" type="submit">Agregar Producto</button>
-      </div>
+    <div>
+      <button class="btn btn-color p-3 mt-5 w-25" type="submit">Agregar Producto</button>
     </div>
   </form>
 </div>
