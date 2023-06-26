@@ -18,8 +18,10 @@ export class Producto extends BaseEntity{
     @Column()
     marca: string;
 
-    @Column()
-    stock: string;
+    @Column({
+        nullable: true,
+    })
+    stock: number;
     
     @Column()
     descripcion: string;

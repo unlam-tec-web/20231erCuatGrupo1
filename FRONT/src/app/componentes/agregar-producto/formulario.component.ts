@@ -17,6 +17,7 @@ export class AgregarProductoComponent {
     nombre: this.fb.control('', [Validators.required, Validators.minLength(5)]),
     precio: this.fb.control('0', [Validators.required]),
     clasificacion: this.fb.control('', [Validators.required]),
+    marca: this.fb.control('', [Validators.required]),
     descripcion: this.fb.control('', [Validators.required, Validators.minLength(5)])
   });
 
@@ -28,6 +29,7 @@ export class AgregarProductoComponent {
       clasificacion: this.miFormulario.get("clasificacion")?.value,
       precio: this.miFormulario.get("precio")?.value,
       descripcion: this.miFormulario.get("descripcion")?.value,
+      marca: this.miFormulario.get("marca")?.value,
       id: this.miFormulario.get("id")?.value
     };
 

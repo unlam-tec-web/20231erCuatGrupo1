@@ -29,7 +29,7 @@
       <div class="row mb-3">
         <div class="col-6 text-start">
           <label class="form-label fs-4" for="marca">Marca</label>
-          <select formControlName="clasificacion" id="marca" class="form-control p-3">
+          <select formControlName="marca" id="marca" class="form-control p-3">
             <option value="">Selecciona una marca</option>
             <option *ngFor="let marca of listMarcas" [value]="marca">
               {{ marca }}

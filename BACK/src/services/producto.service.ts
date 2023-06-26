@@ -8,13 +8,14 @@ export class ProductoService{
     }
 
     crearProducto = async (req: any) => {
-        const {nombre, descripcion, precio, clasificacion} = req.body;
+        const {nombre, descripcion, precio, clasificacion, marca} = req.body;
 
         const producto = new Producto();
         producto.nombre = nombre;
         producto.descripcion = descripcion;
         producto.precio = precio;
         producto.clasificacion = clasificacion;
+        producto.marca = marca;
 
         await producto!.save();
 
