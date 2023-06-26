@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+
 
 // Modelos y servicios
 import {CarritoService} from '../../services/carrito.service';
@@ -16,17 +18,12 @@ export class CarritoDeComprasComponent implements OnInit {
 
 
   // Inyección de dependencias
-  constructor(private cartService: CarritoService) {
+  constructor(private router: Router,private cartService: CarritoService) {
   }
 
   /*METODO QUE SE EJECUTA AL INICIO DEL COMPONENTE*/
   ngOnInit() {
     this.cargarProductosCarrito();
-  }
-
-  /*INSERTO  PRODUCTOS PRECARGADOS AL CARRITO DESDE EL SERVICE*/
-  preCargarProductos() {
-    this.cartService.precargaDeProductos();
   }
 
   /* DEVUELVE LOS PRODUCTOS EN CARRITO*/
@@ -61,12 +58,12 @@ export class CarritoDeComprasComponent implements OnInit {
   /*CALCULA EL PRECIO DEL CARRITO*/
   calcularPrecioTotal(): void {
     const productos = this.cartService.getCartProductos();
-    this.precioTotalCarrito = productos.reduce((total, item) => total + (item.precio * item.cantidad), 0);
+    this.precioTotalCarrito = productos.reduce((total, item) => total + (item.precio * item.stock), 0);
 
 
   }
-
-  eliminarProductos() {
-    this.cartService.eliminarTodosLosProductos();
+  verDetalleProducto(id:number): void{
+    this.router.navigate(['producto', id]);
   }
+
 }

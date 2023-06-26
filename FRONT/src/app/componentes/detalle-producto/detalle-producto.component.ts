@@ -17,6 +17,7 @@ export class DetalleProductoComponent implements OnInit{
   descripcion: string = '';
   nombre: string = '';
   precio: string = '';
+  marca: string='';
   clasificacion: string = '';
 
   constructor(
@@ -40,6 +41,7 @@ export class DetalleProductoComponent implements OnInit{
       this.nombre = producto.nombre;
       this.clasificacion = producto.clasificacion;
       this.descripcion = producto.descripcion;
+      this.marca = producto.marca;
       this.precio = this.formatter.format(producto.precio);
       this.producto = producto;
     });

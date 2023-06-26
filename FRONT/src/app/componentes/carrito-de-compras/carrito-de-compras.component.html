@@ -48,15 +48,15 @@
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
                       <h6 class="text-muted">{{ producto.clasificacion }}</h6>
-                      <h6 class="text-black mb-0">{{ producto.nombre }}</h6>
+                      <h6 (click)="verDetalleProducto(producto.id)" class="text-black mb-0">{{ producto.nombre }}</h6>
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <button class="btn btn-link px-2" *ngIf="producto.cantidad > 1"
+                      <button class="btn btn-link px-2" *ngIf="producto.stock > 1"
                               (click)="disminuirCantidad(producto.id)">
                         <i class="fas fa-minus"></i>
                       </button>
 
-                      <input id="form1" min="1" name="quantity" [(ngModel)]="producto.cantidad" type="number"
+                      <input id="form1" min="1" name="quantity" [(ngModel)]="producto.stock" type="number"
                              class="form-control form-control-sm"/>
 
 
@@ -65,7 +65,7 @@
                       </button>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h6 class="mb-0">$ {{ producto.precio * producto.cantidad }}</h6>
+                      <h6 class="mb-0">$ {{ producto.precio * producto.stock }}</h6>
                     </div>
                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                       <a routerLink="/carrito" class="text-muted" (click)="removeDeCarrito(producto.id)"><i
