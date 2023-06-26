@@ -14,6 +14,12 @@ export class Producto extends BaseEntity{
     
     @Column()
     clasificacion: string;
+
+    @Column()
+    marca: string;
+
+    @Column()
+    stock: string;
     
     @Column()
     descripcion: string;

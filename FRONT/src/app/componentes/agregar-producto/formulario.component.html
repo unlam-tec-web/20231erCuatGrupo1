@@ -10,7 +10,7 @@
   </div>
 
   <!-- Formulario -->
-  <form [formGroup]="miFormulario" (ngSubmit)="agregar()" 
+  <form [formGroup]="miFormulario" (ngSubmit)="agregar()"
         class="row container" enctype="multipart/form-data" autocomplete="off">
 
     <!-- Contenedor izquierdo -->
@@ -31,7 +31,7 @@
           <label class="form-label fs-4" for="marca">Marca</label>
           <select formControlName="clasificacion" id="marca" class="form-control p-3">
             <option value="">Selecciona una marca</option>
-            <option *ngFor="let marca of listClasificaciones" [value]="marca">
+            <option *ngFor="let marca of listMarcas" [value]="marca">
               {{ marca }}
             </option>
           </select>
@@ -53,7 +53,7 @@
         <input formControlName="precio" id="precio" class="form-control p-3" type="number"/>
       </div>
     </div>
-    
+
     <!-- Contenedor derecho -->
     <div class="col-6 px-5">
       <div class="text-start">

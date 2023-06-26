@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
     type:"mysql",
     host:'localhost',
     username: 'root', 
-    password: '',
+    password: 'root',
     port: 3306,
     database: 'grupo-1',
     entities: [Producto, Marca, Categoria],

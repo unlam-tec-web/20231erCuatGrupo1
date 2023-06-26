@@ -10,6 +10,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class AgregarProductoComponent {
 
   listClasificaciones: Array<any> = ['procesador', 'mother', 'placa de video', 'memoria ram', 'gabinete', 'fuente', 'monitor', 'periferico'];
+  listMarcas: Array<any> = ['Razer', 'AMD', 'Intel', 'Gigabyte', 'ASUS', 'AsRock', 'EVGA', 'Cooler Master', 'Corsair'];
   isMensajeMostrado: boolean = false;
 
   miFormulario: FormGroup = this.fb.group({
