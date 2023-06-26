@@ -75,18 +75,16 @@ QUE PONER MANUALMENTE*/
 
   /*AÑADO PRODUCTOS AL CARRITO*/
   addProductoACarrito(product: any) {
-    /* const productoExistente = this.cartProductos.find(item => item.id === product.id);
+     const productoExistente = this.cartProductos.find(item => item.id === product.id);
 
      if (productoExistente) {
-       productoExistente.quantity++;
+       productoExistente.cantidad++;
      } else {
-       /!*PONGO EL VALOR DE CANTIDAD EN 1, CUANDO SE ENFECTUA LA COMPRA RESTO ESTE VALOR AL QUE SE LE ENCUENTRA EN LA BASE
-       * DE DATOS DEL MISMO PRODUCTO*!/
-       product.quantity = 1;*/
+       product.cantidad = 1;
     this.cartProductos.push(product);
-    /*
+
         }
-    */
+
     this.saveCartItemsToLocalStorage();
     this.cantidadProductosCarrito.next(this.cartProductos.length);
 
@@ -110,7 +108,7 @@ QUE PONER MANUALMENTE*/
     const producto = this.cartProductos.find(item => item.id === productId);
 
     if (producto) {
-      producto.quantity++;
+      producto.cantidad++;
       this.saveCartItemsToLocalStorage();
 
     }
@@ -121,8 +119,8 @@ QUE PONER MANUALMENTE*/
     const producto = this.cartProductos.find(item => item.id === productId);
 
     if (producto) {
-      if (producto.quantity > 1) {
-        producto.quantity--;
+      if (producto.cantidad > 1) {
+        producto.cantidad--;
         this.saveCartItemsToLocalStorage();
 
       } else {
