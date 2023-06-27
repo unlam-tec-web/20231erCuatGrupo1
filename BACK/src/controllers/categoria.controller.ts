@@ -10,7 +10,7 @@ export class CategoriaController {
   }
 
   getCategorias = (req: Request, res: Response) => {
-    this.categoriaService.getCategorias(req)
+    this.categoriaService.getCategorias()
       .then(categorias => {
         res.send(categorias);
       })

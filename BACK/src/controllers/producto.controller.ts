@@ -23,7 +23,7 @@ export class ProductoController {
   }
 
   getProductos = (req: Request, res: Response) => {
-    this.productoServicio.getProductos(req)
+    this.productoServicio.getProductos()
     .then(productos => {
       res.send(productos);
     })

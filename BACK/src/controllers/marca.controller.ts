@@ -10,7 +10,7 @@ export class MarcaController {
   }
 
   getMarcas = (req: Request, res: Response) => {
-    this.marcaService.getMarcas(req)
+    this.marcaService.getMarcas()
       .then(marcas => {
         res.send(marcas);
       })

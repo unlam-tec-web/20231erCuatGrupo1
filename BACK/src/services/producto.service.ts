@@ -2,12 +2,12 @@ import { Producto } from '../entities/Producto';
 
 export class ProductoService{
 
-    getProductos = async(req: any) => {
-        const productos = await Producto.find();
+    getProductos = () => {
+        const productos = Producto.find();
         return productos;
     }
 
-    crearProducto = async (req: any) => {
+    crearProducto = (req: any) => {
         const {nombre, descripcion, precio, clasificacion, marca} = req.body;
 
         const producto = new Producto();
@@ -17,13 +17,11 @@ export class ProductoService{
         producto.clasificacion = clasificacion;
         producto.marca = marca;
 
-        await producto!.save();
-
-        return producto;
+        return producto.save();
     }
 
-    getProductoId = async(id: number) => {
-      const producto = await Producto.findOneBy({id: id});
+    getProductoId = (id: number) => {
+      const producto = Producto.findOneBy({id: id});
       return producto;
     }
 
