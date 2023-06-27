@@ -9,14 +9,15 @@ export class MarcaController {
     this.marcaService = new MarcaService();
   }
 
-  getMarcas = async (req: Request, res: Response) => {
-    try {
-      const marcas = await this.marcaService.getMarcas(req);
-      res.send(marcas);
-    } catch (e) {
-      res.status(500);
-      res.send({ error: e });
-    }
+  getMarcas = (req: Request, res: Response) => {
+    this.marcaService.getMarcas(req)
+      .then(marcas => {
+        res.send(marcas);
+      })
+      .catch(e => {
+        res.status(500);
+        res.send({ error: e });
+      });
   }
 
 }
