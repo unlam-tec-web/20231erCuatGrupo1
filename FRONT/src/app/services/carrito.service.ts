@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
 
@@ -7,20 +9,22 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CarritoService {
   private cartProductos: any[] = [];
+  private id:number=0;
   private cantidadProductosCarrito: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private baseUrl: string = "http://localhost:3000";
 
 
-  constructor() {
-    this.loadCartItemsFromLocalStorage();
+  constructor(private http: HttpClient) {
+    this.cargarProductosDelLocalStorage();
   }
 
   /*GUARDO PRODUCTOS AL LOCALSTORAGE*/
-  private saveCartItemsToLocalStorage(): void {
+  private guardarProductosEnLocalStorage(): void {
     localStorage.setItem('cartProductos', JSON.stringify(this.cartProductos));
   }
 
   /*CARGO PRODUCTOS DESDE EL LOCALSTORAGE*/
-  private loadCartItemsFromLocalStorage(): void {
+  private cargarProductosDelLocalStorage(): void {
     const savedCartItems = localStorage.getItem('cartProductos');
     if (savedCartItems) {
       this.cartProductos = JSON.parse(savedCartItems);
@@ -43,8 +47,7 @@ export class CarritoService {
     this.cartProductos.push(product);
 
         }
-
-    this.saveCartItemsToLocalStorage();
+    this.guardarProductosEnLocalStorage();
     this.cantidadProductosCarrito.next(this.cartProductos.length);
 
   }
@@ -55,7 +58,7 @@ export class CarritoService {
 
     if (itemIndex !== -1) {
       this.cartProductos.splice(itemIndex, 1);
-      this.saveCartItemsToLocalStorage();
+      this.guardarProductosEnLocalStorage();
       this.cantidadProductosCarrito.next(this.cartProductos.length);
 
 
@@ -68,7 +71,7 @@ export class CarritoService {
 
     if (producto) {
       producto.stock++;
-      this.saveCartItemsToLocalStorage();
+      this.guardarProductosEnLocalStorage();
 
     }
   }
@@ -80,11 +83,11 @@ export class CarritoService {
     if (producto) {
       if (producto.stock > 1) {
         producto.stock--;
-        this.saveCartItemsToLocalStorage();
+        this.guardarProductosEnLocalStorage();
 
       } else {
         this.removeDeCarrito(productId);
-        this.saveCartItemsToLocalStorage();
+        this.guardarProductosEnLocalStorage();
 
       }
     }
@@ -94,11 +97,18 @@ export class CarritoService {
     return this.cantidadProductosCarrito;
   }
 
-/*  /!*ELIMINA TODOS LOS PRODUCTOS*!/
+/*  /!*ELIMINA TODOS LOS PRODUCTOS*!/*/
   eliminarTodosLosProductos() {
     while (this.cartProductos.length > 0) {
       const productId = this.cartProductos[0].id;
       this.removeDeCarrito(productId);
     }
-  }*/
+  }
+
+  realizarCompra(productos :any): Observable<any>{
+    this.id++;
+    this.eliminarTodosLosProductos();
+    return this.http.post((`${this.baseUrl}/${this.id}`), productos);
+
+  }
 }

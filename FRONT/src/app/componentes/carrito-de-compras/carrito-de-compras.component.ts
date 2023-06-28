@@ -66,4 +66,11 @@ export class CarritoDeComprasComponent implements OnInit {
     this.router.navigate(['producto', id]);
   }
 
+  realizarCompra(){
+    const productosCarrito= JSON.stringify(this.cartProductos)
+    this.cartService.realizarCompra(productosCarrito).subscribe(response => {
+      console.log('Productos enviados al backend:',productosCarrito);
+  });
+
+  }
 }

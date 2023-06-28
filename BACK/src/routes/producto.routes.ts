@@ -3,6 +3,7 @@ import { MarcaController } from "../controllers/marca.controller";
 import { ProductoController } from "../controllers/producto.controller";
 import { CategoriaController } from "../controllers/categoria.controller";
 
+
 export default class ProductoRouter{
 
     private router: Router;
@@ -25,6 +26,7 @@ export default class ProductoRouter{
         this.router.post('/', this.productoController.crearProducto);
         this.router.get('/', this.productoController.getProductos);
         this.router.get('/:id', this.productoController.getProductoId);
+
     }
 
     public obtenerRutas(){
