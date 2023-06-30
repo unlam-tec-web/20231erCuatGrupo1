@@ -14,6 +14,7 @@ export class AgregarProductoComponent {
   isMensajeMostrado: boolean = false;
 
   miFormulario: FormGroup = this.fb.group({
+    imagen: this.fb.control('', [Validators.required]),
     nombre: this.fb.control('', [Validators.required, Validators.minLength(5)]),
     precio: this.fb.control('0', [Validators.required]),
     clasificacion: this.fb.control('', [Validators.required]),
@@ -25,6 +26,7 @@ export class AgregarProductoComponent {
 
   agregar(){
     const producto = {
+      imagen: this.miFormulario.get("imagen")?.value,
       nombre: this.miFormulario.get("nombre")?.value,
       clasificacion: this.miFormulario.get("clasificacion")?.value,
       precio: this.miFormulario.get("precio")?.value,
@@ -32,6 +34,8 @@ export class AgregarProductoComponent {
       marca: this.miFormulario.get("marca")?.value,
       id: this.miFormulario.get("id")?.value
     };
+
+    console.log(producto.imagen);
 
     this.productoService.agregarProducto(producto).subscribe( res => {
       this.isMensajeMostrado = true;

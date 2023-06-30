@@ -1,8 +1,16 @@
 <div class="container-fluid mt-5">
+
   <div class="d-flex justify-content-center">
 
     <!-- Contenedor -->
     <div class="shadow rounded p-5 bg-white">
+
+      <div *ngIf="mensaje != ''" class="px-4" role="alert">
+        <div class="alert alert-success">
+          <p class="text-center">{{ mensaje }}</p>
+        </div>
+      </div>
+
       <div class="text-center">
         <h2>Registrarse</h2>
       </div>
@@ -55,7 +63,6 @@
             <div *ngIf="f.email.invalid && f.email.touched" class="text-danger text-start">
               <div *ngIf="f.email.errors?.['required']"><p class="ps-1 mt-2 mb-0">El email es requerido</p></div>
               <div *ngIf="f.email.errors?.['email']"><p class="ps-1 mt-2 mb-0">El formato ingresado no es valido</p></div>
-              <div *ngIf="f.email.errors?.['emailNotExist']"><p class="ps-1 mt-2 mb-0">El email ingresado no existe</p></div>
               <div *ngIf="f.email.errors?.['emailRegistered']"><p class="ps-1 mt-2 mb-0">El email ingresado ya esta registrado en otra cuenta</p></div>
             </div>
           </div>
@@ -112,7 +119,7 @@
           </div>
           
           <button type="submit"  class="btn fw-bold text-light sing-up rounded p-3 w-100"
-                  [disabled]="singupForm.invalid && singupForm.touched">Registrarme</button>
+                  [disabled]="singupForm.invalid">Registrarme</button>
         </form>
       </div>
       <!-- Fin formulario -->

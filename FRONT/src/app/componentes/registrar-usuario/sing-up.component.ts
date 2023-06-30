@@ -6,7 +6,6 @@ import { FormBuilder, FormControl, AbstractControl, Validators, ValidationErrors
 // Modelos y servicios
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/usuario.service';
-import { EmailValidation } from '../../interfaces/emailValidation';
 
 @Component({
   selector: 'app-sing-up',
@@ -18,13 +17,14 @@ export class SingUpComponent {
   // Modelo nuevo usuario
   users: User[] = [];
   newUser: User = {
-    id: 0,
     nombre: '',
     apellido: '',
     direccion: '',
     email: '',
     password: ''
   };
+
+  mensaje : String = '';
 
   ngOnInit(): void{
   }
@@ -107,38 +107,11 @@ export class SingUpComponent {
     return null;
   }
   
-  // Validaciónes adicionales de formulario enviado
+  // Procesamiento de formulario
   onSubmit(): void {
-
-    if (this.singupForm.invalid) {}
-
-    // Validación de correo repetido
-    let user = this.userService.getUserByEmail(this.singupForm.controls.email.value!);
-    if(user != null){
-      this.singupForm.controls.email.setErrors({ emailRegistered: true });
-      return;
-    }    
-
-    // Validación de correo a traves de una API
-    let email = this.singupForm.controls.email!;
-    let res: Observable<EmailValidation[]> = 
-        this.httpClient.get<EmailValidation[]>("https://emailvalidation.abstractapi.com/v1/?api_key=b7e0590192854e169a7fecbf79323e7d&email=" + email.value)
-        .pipe(share());
-    
-    res.subscribe(
-      value => {
-        if (value[0].deliverability != 'DELIVERABLE') {
-          this.singupForm.controls.email.setErrors({ emailNotExists: true });
-        }
-      },
-      error => {
-        console.error('Error al llamar a la API de validación de correo electrónico:', error);
-      }
-    )
 
     // Valores recibidos de nuevo usuario
     this.newUser = { 
-      id: 0,
       nombre: this.singupForm.controls.firstName.value!, 
       apellido: this.singupForm.controls.lastName.value!, 
       direccion: this.singupForm.controls.address.value!,
@@ -147,6 +120,17 @@ export class SingUpComponent {
     }
 
     // Registro de nuevo usuario
-    this.userService.createUser(this.newUser);
+    this.userService.createUser(this.newUser).subscribe({
+      next: (response: any) => {
+        this.mensaje = response.mensaje;
+        console.log(this.mensaje);
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+
+    this.singupForm.reset();
   }
+
 }

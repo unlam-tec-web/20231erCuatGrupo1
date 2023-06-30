@@ -21,6 +21,9 @@ export class Producto extends BaseEntity{
     @Column()
     marca: string;
 
+    @Column()
+    imagen: string;
+
     @Column({
         nullable: true,
     })

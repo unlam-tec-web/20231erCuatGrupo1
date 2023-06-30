@@ -8,7 +8,6 @@ export class ProductoController {
     this.productoServicio = new ProductoService();
   }
 
-
   crearProducto = (req: Request, res: Response) => {
     this.productoServicio.crearProducto(req)
       .then(producto => {
@@ -45,6 +44,5 @@ export class ProductoController {
         res.send({ error: e });
       });
     }
-
 
 }
