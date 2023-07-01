@@ -16,7 +16,6 @@ export class UsuarioServicio {
     attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name", Value: nombre}));
     attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"family_name", Value: apellido}));
     attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"address", Value: direccion}));
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email", Value: email}));
 
     return new Promise((resolve, reject) => {
       userPool.signUp(email, password, attributeList, null, (err : any) => {

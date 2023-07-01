@@ -52,8 +52,9 @@ import { CarritoService } from "./services/carrito.service";
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService,
-  CarritoService],
+  providers: [
+    UserService,
+    CarritoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

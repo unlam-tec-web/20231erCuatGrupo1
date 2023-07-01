@@ -129,7 +129,7 @@ export class SingUpComponent {
         console.error(error);
       }
     });
-
+    
     this.singupForm.reset();
   }
 
