@@ -19,6 +19,7 @@ import { SingInComponent } from './componentes/iniciar-sesion/sing-in.component'
 import { CardComponent } from './componentes/tarjeta-producto/card.component';
 import { MarcaComponent } from './componentes/tarjeta-marca/marca.component';
 import { CategoriaComponent } from './componentes/tarjeta-categoria/categoria.component';
+import { VerifyCodeComponent } from './componentes/verificar-codigo/verify-code.component';
 import { DetalleProductoComponent } from './componentes/detalle-producto/detalle-producto.component';
 import { AgregarProductoComponent } from './componentes/agregar-producto/formulario.component';
 import { CarritoDeComprasComponent } from './componentes/carrito-de-compras/carrito-de-compras.component';
@@ -32,6 +33,7 @@ import { CarritoService } from "./services/carrito.service";
     AppComponent,
     SingInComponent,
     SingUpComponent,
+    VerifyCodeComponent,
     AgregarProductoComponent,
     CarritoDeComprasComponent,
     NavbarComponent,

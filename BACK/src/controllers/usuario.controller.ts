@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { UsuarioServicio } from "../services/usuario.service"
 
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
@@ -20,8 +19,6 @@ export class UsuarioController {
         attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"family_name", Value: apellido}));
         attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"address", Value: direccion}));
         attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value: email}));
-
-        console.log("JSON:" + JSON.stringify(req.body));
     
         userPool.signUp(email, password, attributeList, [], function(err: any, result: any){
             if (err) {
@@ -30,19 +27,57 @@ export class UsuarioController {
                 return;
             }
             let cognitoUser = result.user;
-            console.log('user name is ' + cognitoUser.getUsername());
-            res.json({
-                bienvenido: `${cognitoUser.getUsername()}`
-            })
+            console.log('usuario: ' + cognitoUser.getUsername() + ' registrado');
         });
     }
 
     autenticarUsuario = (req: Request, res: Response) => {
-       
+        let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+        const {email, password} = req.body;
+    
+        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
+            Username : email,
+            Password : password
+        });
+      
+        var userData = {
+            Username : email,
+            Pool : userPool
+        };
+    
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+          
+        cognitoUser.authenticateUser(authenticationDetails, function(err: any, result: any){
+            if (err) {
+                console.log(err);
+                res.json(err);
+                return;
+            }
+            let cognitoUser = result.user;
+            console.log('username: ' + cognitoUser.getUsername() + ' autentificado');
+        });
     }
 
-    autenticarCodigo = (req: Request, res: Response) => {
-       
+    verificarCodigo = (req: Request, res: Response) => {
+        let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+        const {email, codigo} = req.body;
+
+        var userData = {
+          Username : email,
+          Pool : userPool
+        };
+      
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+        cognitoUser.confirmRegistration(codigo, true, function(err: any, result: any) {
+           if (err) {
+                console.log(err);
+                res.json(err);
+                return;
+            }
+            let cognitoUser = result.user;
+            console.log('username: ' + cognitoUser.getUsername() + ' verificado');
+        })
     }
 
 }

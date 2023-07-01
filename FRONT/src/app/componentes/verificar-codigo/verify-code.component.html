@@ -1,0 +1,66 @@
+<div class="container mt-5">
+
+    <div *ngIf="mensajeExito" class="alert alert-success m-auto w-50" role="alert">
+        <p class="ps-1 mt-2 mb-0 d-inline me-5">Tu cuenta se ha verificado con exito. Ya podes iniciar sesion</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div *ngIf="mensajeError" class="alert alert-danger m-auto w-50" role="alert">
+        <p class="ps-1 mt-2 mb-0 d-inline me-5">No se pudo completar la verificación. Correo o código incorrecto.</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="d-flex justify-content-center">
+
+        <!-- Contenedor -->
+        <div class="shadow rounded my-5 p-5 bg-white">
+
+            <div class="text-center">
+                <h2>Verifica tu cuenta</h2>
+            </div>
+
+            <span class="px-4">Se ha enviado un codigo a tu correo electronico</span>
+
+            <!-- Formulario -->
+            <div class="p-4">
+                <form [formGroup]="verifyForm" (ngSubmit)="onSubmit()">
+
+                    <!-- Campo email -->
+                    <div class="mb-4">
+                        <label class="form-label d-none" for="email"></label>
+                        <input type="email" class="form-control p-3" id="email" placeholder="Email"
+                            formControlName="email" [ngClass]="{'is-invalid': f.email.invalid && f.email.touched}">
+                        <!-- Mensajes de error -->
+                        <div *ngIf="f.email.invalid && f.email.touched" class="text-danger text-start">
+                            <div *ngIf="f.email.errors?.['required']">
+                                <p class="ps-1 mt-2 mb-0">El email es requerido</p>
+                            </div>
+                            <div *ngIf="f.email.errors?.['email']">
+                                <p class="ps-1 mt-2 mb-0">El formato ingresado no es valido</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campo codigo -->
+                    <div class="mb-4">
+                        <label class="form-label d-none" for="codigo"></label>
+                        <input type="text" class="form-control p-3" id="codigo" placeholder="codigo"
+                            formControlName="codigo"
+                            [ngClass]="{'is-invalid': f.codigo.invalid && f.codigo.touched}">
+                        <!-- Mensaje error -->
+                        <div *ngIf="f.codigo.invalid && f.codigo.touched">
+                            <p class="text-danger text-start ps-1 mt-2 mb-0">El codigo es requerido</p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn fw-bold text-light verify rounded p-3 w-100"
+                        [disabled]="verifyForm.invalid">Verificar</button>
+                </form>
+            </div>
+            <!-- Fin formulario -->
+
+        </div>
+        <!-- Fin contenedor -->
+
+    </div>
+</div>

@@ -1,15 +1,8 @@
 <div class="container-fluid mt-5">
-
   <div class="d-flex justify-content-center">
 
     <!-- Contenedor -->
-    <div class="shadow rounded p-5 bg-white">
-
-      <div *ngIf="mensaje != ''" class="px-4" role="alert">
-        <div class="alert alert-success">
-          <p class="text-center">{{ mensaje }}</p>
-        </div>
-      </div>
+    <div class="shadow rounded mt-3 mb-5 p-5 bg-white">
 
       <div class="text-center">
         <h2>Registrarse</h2>
@@ -124,7 +117,18 @@
       </div>
       <!-- Fin formulario -->
 
-      <span>Ya tenes una cuenta? <a class="fw-bold" routerLink="/singIn">Inicia sesión</a></span>
+      <div class="px-4">
+        <span>Ya tenes una cuenta? <a class="fw-bold" routerLink="/singIn">Inicia sesión</a></span>
+        <div class="row flex-nowrap justify-content-center my-3">
+            <hr class="col-auto mt-auto mx-0 w-25">
+            <div class="col-auto text-center">
+              <span class="bg-white px-2">O</span>
+            </div>
+            <hr class="col-auto mt-auto mx-0 w-25">
+        </div>
+        <span>Si ya tenes un código <a class="fw-bold" routerLink="/verificar">verifica tu cuenta</a></span>
+      </div>
+
     </div>
     <!-- Fin contenedor -->
 

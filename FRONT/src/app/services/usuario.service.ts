@@ -16,8 +16,12 @@ export class UserService {
     return this.http.post(this.baseUrl + "/crear", usuario);
   }
 
-  verifyUser(email: any, password : any): Observable<any>{
-    return this.http.post(this.baseUrl + "/verificar", email, password);
+  verifyCode(data : any): Observable<any>{
+    return this.http.post(this.baseUrl + "/verificar", data);
+  }
+
+  authenticateUser(data : any): Observable<any>{
+    return this.http.post(this.baseUrl + "/autentificar", data);
   }
 
 }

@@ -14,7 +14,8 @@ export default class UsuarioRouter {
         this.router = express.Router();
 
         this.router.post('/usuario/crear', this.usuarioController.registrarUsuario);
-        this.router.post('/usuario/verificar', this.usuarioController.autenticarUsuario);
+        this.router.post('/usuario/verificar', this.usuarioController.verificarCodigo);
+        this.router.post('/usuario/autentificar', this.usuarioController.autenticarUsuario);
     }
 
     public obtenerRutas(){

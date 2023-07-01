@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, share } from 'rxjs';
 import { FormBuilder, FormControl, AbstractControl, Validators, ValidationErrors } from '@angular/forms';
 
 // Modelos y servicios
@@ -24,15 +24,14 @@ export class SingUpComponent {
     password: ''
   };
 
-  mensaje : String = '';
-
   ngOnInit(): void{
   }
 
   // Inyección de dependencias
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              protected httpClient: HttpClient) {}
+              protected httpClient: HttpClient,
+              private router: Router) {}
 
   // Inicialización de formulario
   singupForm = this.formBuilder.group({
@@ -121,16 +120,18 @@ export class SingUpComponent {
 
     // Registro de nuevo usuario
     this.userService.createUser(this.newUser).subscribe({
-      next: (response: any) => {
-        this.mensaje = response.mensaje;
-        console.log(this.mensaje);
+      next: (response) => {
+        if (response.hasOwnProperty('code') && response.code === 'UsernameExistsException') {
+          console.error('Ya existe un usuario con ese email');
+          this.singupForm.controls.email.setErrors({ emailRegistered: true });
+        } 
+        console.log('Usuario registrado con exito', response);
+        this.router.navigateByUrl("/verificar");
       },
-      error: (error: any) => {
-        console.error(error);
+      error: (error) => {
+        console.error('Error al registrar usuario:', error);
       }
     });
-    
-    this.singupForm.reset();
   }
 
 }

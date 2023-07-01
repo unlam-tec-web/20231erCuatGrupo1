@@ -1,0 +1,19 @@
+i:hover{
+    cursor: pointer;
+}
+
+.verify{
+    border: 2px solid #3630EA!important;
+    background-color: #3630EA!important;
+    transition: 0.5s;
+}
+
+.verify:hover{
+    background-color: white!important;
+    color: #3630EA!important;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border-color: #3630EA!important;
+}
