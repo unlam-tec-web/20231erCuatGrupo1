@@ -5,16 +5,21 @@
     </div>
 
     <div class="py-4 px-5">
-      <form>
+      <form [formGroup]="singInForm" (ngSubmit)="onSubmit()">
         <div class="mb-4">
           <label class="form-label fs-4 fw-bold d-none" for="user">Email</label>
-          <input type="text" class="form-control p-3" id="user" placeholder="Email"/>
+          <input type="text" class="form-control p-3" id="user" placeholder="Email" formControlName="email" />
         </div>
 
         <div class="mb-4">
           <label class="form-label fs-4 fw-bold d-none" for="password">Contraseña</label>
-          <input type="password" class="form-control p-3" id="password" placeholder="Contraseña"/>
+          <input type="password" class="form-control p-3" id="password" placeholder="Contraseña"
+            formControlName="password" />
           <p class="fw-bold my-3" style="color: #92bbff"><a class="opacity-75">¿Olvidaste tu contraseña?</a></p>
+        </div>
+
+        <div *ngIf="mensajeError">
+          <p class="text-danger text-center ps-1 my-2">Email o contraseña incorrecta</p>
         </div>
 
         <div class="pt-1 mb-2 text-center">
@@ -24,6 +29,7 @@
     </div>
 
     <hr>
-    <span>No tienes una cuenta? <a class="fw-bold" routerLink="/singUp" style="color: #3630EA">Registrate aqui</a></span>
+    <span>No tienes una cuenta? <a class="fw-bold" routerLink="/singUp" style="color: #3630EA">Registrate
+        aqui</a></span>
   </div>
 </div>

@@ -47,14 +47,15 @@ export class UsuarioController {
     
         var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
           
-        cognitoUser.authenticateUser(authenticationDetails, function(err: any, result: any){
-            if (err) {
+        cognitoUser.authenticateUser(authenticationDetails, {
+            onSuccess: function(result: any) {
+                let cognitoUser = result.user;
+                console.log('username: ' + cognitoUser.getUsername() + ' autentificado');
+            },
+            onFailure: function(err: any) {
                 console.log(err);
                 res.json(err);
-                return;
             }
-            let cognitoUser = result.user;
-            console.log('username: ' + cognitoUser.getUsername() + ' autentificado');
         });
     }
 
