@@ -9,4 +9,7 @@ export class Categoria extends BaseEntity{
     @Column()
     descripcion: string;
 
+    @Column()
+    imagen: string;
+    
 }

@@ -1,3 +1,13 @@
+.card:hover {
+    transition: 0.5s;
+    color: white!important;
+    background-color: #3630EA!important;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
 .card-brand{
     transition: 0.2s;
     -webkit-transition: 0.2s;

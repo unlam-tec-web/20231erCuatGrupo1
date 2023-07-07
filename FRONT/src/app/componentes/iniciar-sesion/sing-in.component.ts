@@ -16,7 +16,7 @@ export class SingInComponent {
     password: ''
   };
 
-  mensajeError : boolean = false;
+  error : boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private userService: UserService,
@@ -41,16 +41,12 @@ export class SingInComponent {
 
     this.userService.authenticateUser(this.newData).subscribe({
       next: (response) => {
-        if(response.hasOwnProperty('code') && response.code === 'NotAuthorizedException') {
-          console.error('Credenciales invalidas');
-          this.mensajeError = true;
-        } else {
-          console.log('Se ha iniciado sesion', response);
-          this.router.navigateByUrl("/home");
-        }
+        console.log(response.message);
+        this.router.navigateByUrl("/home");
       },
       error: (error) => {
-        console.error('Error al iniciar sesion', error);
+        console.error(error.error.message);
+        this.error = true;
       }
     });
   }

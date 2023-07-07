@@ -24,6 +24,8 @@ export class SingUpComponent {
     password: ''
   };
 
+  error: string = '';
+
   ngOnInit(): void{
   }
 
@@ -121,15 +123,12 @@ export class SingUpComponent {
     // Registro de nuevo usuario
     this.userService.createUser(this.newUser).subscribe({
       next: (response) => {
-        if (response.hasOwnProperty('code') && response.code === 'UsernameExistsException') {
-          console.error('Ya existe un usuario con ese email');
-          this.singupForm.controls.email.setErrors({ emailRegistered: true });
-        } 
-        console.log('Usuario registrado con exito', response);
+        console.log(response.message);
         this.router.navigateByUrl("/verificar");
       },
       error: (error) => {
-        console.error('Error al registrar usuario:', error);
+        console.error(error.error.message);
+        this.error = error.error.message;
       }
     });
   }

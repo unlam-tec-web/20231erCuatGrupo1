@@ -17,7 +17,7 @@ export class VerifyCodeComponent {
     };
 
     mensajeExito: boolean = false;
-    mensajeError: boolean = false;
+    mensajeError: string = '';
 
     constructor(private formBuilder: FormBuilder,
         private userService: UserService,
@@ -42,17 +42,12 @@ export class VerifyCodeComponent {
 
         this.userService.verifyCode(this.newData).subscribe({
             next: (response) => {
-                if (response.hasOwnProperty('code') && response.code === 'ExpiredCodeException' || "CodeMismatchException") {
-                    console.error('Error al verificar cuenta');
-                    this.mensajeError = true;
-                } else {
-                    console.log('Cuenta verificada con éxito!', response);
-                    this.mensajeExito = true;
-                }
+                console.log(response.message);
+                this.mensajeExito = true;
             },
             error: (error) => {
-                console.error('Error al verificar cuenta:', error);
-                this.mensajeError = true;
+                console.error(error.error.message);
+                this.mensajeError = error.error.message;
             }
         });
     }

@@ -9,4 +9,7 @@ export class Marca extends BaseEntity{
     @Column()
     descripcion: string;
 
+    @Column()
+    imagen: string;
+    
 }

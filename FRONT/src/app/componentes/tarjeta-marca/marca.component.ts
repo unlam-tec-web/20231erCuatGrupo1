@@ -12,11 +12,13 @@ export class MarcaComponent implements OnInit{
   @Input()
   marca: any;
   descripcion: string = "";
+  imagenBase64: string = "";
   id: number = 0;
 
   constructor(private router: Router, private marcaService: MarcaService){}
 
   ngOnInit(): void {
+    this.imagenBase64 = this.marca.imagenBase64
     this.descripcion = this.marca.descripcion;
     this.id = this.marca.id;
   }
