@@ -11,13 +11,13 @@
 
   <!-- Formulario -->
   <form [formGroup]="miFormulario" (ngSubmit)="agregar()"
-        class="row container" enctype="multipart/form-data" autocomplete="off">
+        class="row container" autocomplete="off">
 
     <!-- Contenedor izquierdo -->
     <div class="col-6 shadow-sm rounded bg-white p-5">
       <div class="text-start">
         <label class="form-label fs-4" for="imagen">Imagen</label>
-        <input formControlName="imagen" class="form-control p-3 mb-3" id="imagen" type="file">
+        <input class="form-control p-3 mb-3" id="imagen" type="file" (change)="onFileSelected($event)">
       </div>
 
       <div class="text-start">
