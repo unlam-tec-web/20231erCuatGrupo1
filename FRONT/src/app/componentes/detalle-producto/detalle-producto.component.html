@@ -8,20 +8,20 @@
       <div class="col-lg-6 pe-4">
 
         <!-- Imagen de producto -->
-        <div class="text-center shadow-sm rounded bg-white">
-          <img [src]="imagen" alt="producto" class="img-responsive rounded" width="80%" height="600px">
+        <div class="text-center left shadow-sm rounded bg-white d-flex justify-content-center align-items-center">
+          <img [src]="imagen" alt="producto" class="img-responsive" width="90%">
         </div>
 
         <!-- Descripcion del producto -->
         <div class="text-start shadow-sm rounded bg-white mt-5 p-5">
           <h3>Descripción del producto</h3>
           <hr class="border mt-3 mb-4 opacity-100">
-          <p>{{ descripcion }}</p>
+          <p style="white-space: pre-line">{{ descripcion }}</p>
         </div>
       </div>
 
       <!-- Contenedor derecho -->
-      <div class="col-lg-6 shadow-sm rounded bg-white p-5">
+      <div class="col-lg-6 right shadow-sm rounded bg-white p-5">
 
         <!-- Información de producto -->
         <div class='text-start'>

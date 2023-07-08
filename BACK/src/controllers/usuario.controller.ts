@@ -94,7 +94,7 @@ export class UsuarioController {
 
         authenticateUser(authenticationDetails)
             .then((result: any) => {
-                res.status(200).json({ message: result + ' se ha iniciado sesion correctamente' });
+                res.status(200).json({ message: 'Se ha iniciado sesion correctamente' });
             })
             .catch((err: any) => {
                 res.status(500).json({ message: 'Lo sentimos, las credenciales no son validas' });

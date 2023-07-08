@@ -27,10 +27,7 @@ export class CardComponent implements OnInit{
     this.nombre = this.producto.nombre;
     this.id = this.producto.id;
     this.precio = this.formatter.format(this.producto.precio);
-    this.imagen = this.producto.imagen
-    console.log(this.producto);
-
-
+    this.imagen = this.producto.imagen;
   }
 
   verDetalleProducto(): void{
