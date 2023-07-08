@@ -27,6 +27,7 @@ import { CarritoDeComprasComponent } from './componentes/carrito-de-compras/carr
 // Servicios
 import { UserService } from './services/usuario.service';
 import { CarritoService } from "./services/carrito.service";
+import { ListaProductosComponent } from './componentes/lista-productos/lista-productos.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CarritoService } from "./services/carrito.service";
     HomeComponent,
     CardComponent,
     MarcaComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    ListaProductosComponent
   ],
   imports: [
     CommonModule,

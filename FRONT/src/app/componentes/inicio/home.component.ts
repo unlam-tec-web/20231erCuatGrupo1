@@ -31,11 +31,16 @@ export class HomeComponent implements OnInit {
 
   getProductos(): void {
     this.productoService.getProductos().subscribe(productos => {
-      this.listProductos = productos
+      this.listProductos = productos;
       this.isCargando = false;
-    })
+      this.listProductos = this.listProductos.slice(-4); // Limitar a los últimos 4 productos
+
+    });
   }
 
+  cantidadDeProductos(){
+
+  }
   getMarcas(): void {
     this.marcaService.getMarcas().subscribe(marcas => {
       this.listMarcas = marcas

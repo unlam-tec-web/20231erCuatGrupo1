@@ -1,0 +1,9 @@
+<div class="container mt-5 mb-5">
+  <h2 class="text-start">Nuestros Productos</h2>
+  <hr>
+  <div class="row row-cols-1 row-cols-md-4 mt-2 g-3">
+    <div *ngFor="let producto of listProductos">
+      <app-card-product [producto]="producto"></app-card-product>
+    </div>
+  </div>
+</div>

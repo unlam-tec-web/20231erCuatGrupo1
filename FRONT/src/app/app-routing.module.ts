@@ -7,6 +7,7 @@ import { VerifyCodeComponent } from './componentes/verificar-codigo/verify-code.
 import { DetalleProductoComponent } from './componentes/detalle-producto/detalle-producto.component';
 import { AgregarProductoComponent } from './componentes/agregar-producto/formulario.component';
 import { CarritoDeComprasComponent } from "./componentes/carrito-de-compras/carrito-de-compras.component";
+import {ListaProductosComponent} from "./componentes/lista-productos/lista-productos.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: "full"},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:"producto/:id", component: DetalleProductoComponent},
   {path:'carrito', component: CarritoDeComprasComponent},
   {path:"agregarProducto", component:AgregarProductoComponent},
+  {path:"listaProductos", component:ListaProductosComponent},
   {path:"**", redirectTo: "", pathMatch: "full"}
 ];
 
