@@ -26,4 +26,6 @@ app.use(carritoRouter.obtenerRutas());
 usuarioRouter.iniciar(express);
 app.use(usuarioRouter.obtenerRutas());
 
+app.use("/img", express.static("/home/rinaldi_s/Documentos/Apuntes/TP/20231erCuatGrupo1/BACK/src/public/img"));
+
 export default app

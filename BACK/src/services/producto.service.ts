@@ -8,14 +8,8 @@ export class ProductoService{
         return productos;
     }
 
-    crearProducto = (req: any) => {
-        const {imagen, nombre, descripcion, precio, clasificacion, marca} = req.body;
-
-        /*const imageData = Buffer.from(imagen, 'base64');
-        const filename = Math.random().toString(36).substring(2, 8) + '.jpg';
-        const directory = 'src/assets/productos/';
-
-        fs.writeFileSync(directory + filename, imageData);*/
+    crearProducto = (req: any, pathImg: string) => {
+        const {nombre, descripcion, precio, clasificacion, marca} = req.body;
 
         const producto = new Producto();
         producto.nombre = nombre;
@@ -23,7 +17,7 @@ export class ProductoService{
         producto.precio = precio;
         producto.clasificacion = clasificacion;
         producto.marca = marca;
-        producto.imagen = "";
+        producto.imagen = pathImg;
 
         return producto.save();
     }

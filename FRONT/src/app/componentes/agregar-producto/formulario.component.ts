@@ -12,6 +12,7 @@ export class AgregarProductoComponent {
   listClasificaciones: Array<any> = ['procesador', 'mother', 'placa de video', 'memoria ram', 'gabinete', 'fuente', 'monitor', 'periferico'];
   listMarcas: Array<any> = ['Razer', 'AMD', 'Intel', 'Gigabyte', 'ASUS', 'AsRock', 'EVGA', 'Cooler Master', 'Corsair'];
   isMensajeMostrado: boolean = false;
+  archivo!: File;
 
   miFormulario: FormGroup = this.fb.group({
     imagen: this.fb.control('', [Validators.required]),
@@ -25,19 +26,16 @@ export class AgregarProductoComponent {
   constructor(private fb: FormBuilder, private productoService: ProductoService) {}
 
   agregar(){
-    const producto = {
-      imagen: this.miFormulario.get("imagen")?.value,
-      nombre: this.miFormulario.get("nombre")?.value,
-      clasificacion: this.miFormulario.get("clasificacion")?.value,
-      precio: this.miFormulario.get("precio")?.value,
-      descripcion: this.miFormulario.get("descripcion")?.value,
-      marca: this.miFormulario.get("marca")?.value,
-      id: this.miFormulario.get("id")?.value
-    };
+    const data = new FormData();
+    data.append("nombre", this.miFormulario.get("nombre")?.value);
+    data.append("marca", this.miFormulario.get("marca")?.value);
+    data.append("precio", this.miFormulario.get("precio")?.value);
+    data.append("descripcion", this.miFormulario.get("descripcion")?.value);
+    data.append("id", this.miFormulario.get("id")?.value);
+    data.append("clasificacion", this.miFormulario.get("clasificacion")?.value);
+    data.append("file", this.archivo);
 
-    console.log(producto.imagen);
-
-    this.productoService.agregarProducto(producto).subscribe( res => {
+    this.productoService.agregarProducto(data).subscribe( res => {
       this.isMensajeMostrado = true;
     });
 
@@ -46,6 +44,11 @@ export class AgregarProductoComponent {
 
   eliminarMensaje(){
     this.isMensajeMostrado = false;
+  }
+
+  onArchivoSeleccionado(a: any) {
+    this.archivo = a.target.files[0];
+
   }
 
 }

@@ -11,10 +11,11 @@ export class CardComponent implements OnInit{
 
   @Input()
   producto: any;
+  imagen: string = "";
   precio: string = "";
   nombre: string = "";
   id: number = 0;
-  
+
   @Output()
   onEliminar: EventEmitter <number> = new EventEmitter();
 
@@ -26,6 +27,10 @@ export class CardComponent implements OnInit{
     this.nombre = this.producto.nombre;
     this.id = this.producto.id;
     this.precio = this.formatter.format(this.producto.precio);
+    this.imagen = this.producto.imagen
+    console.log(this.producto);
+
+
   }
 
   verDetalleProducto(): void{

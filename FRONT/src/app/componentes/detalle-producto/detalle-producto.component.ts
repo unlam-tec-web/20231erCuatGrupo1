@@ -19,6 +19,7 @@ export class DetalleProductoComponent implements OnInit{
   precio: string = '';
   marca: string='';
   clasificacion: string = '';
+  imagen: string = "";
 
   constructor(
     private aRoute: ActivatedRoute,
@@ -44,6 +45,7 @@ export class DetalleProductoComponent implements OnInit{
       this.marca = producto.marca;
       this.precio = this.formatter.format(producto.precio);
       this.producto = producto;
+      this.imagen = producto.imagen
     });
   }
 
