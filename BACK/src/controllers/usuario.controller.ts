@@ -81,11 +81,10 @@ export class UsuarioController {
             return new Promise((resolve, reject) => {
                 cognitoUser.authenticateUser(authenticationDetails, {
                     onSuccess: function (result: any) {
-                        let cognitoUser = result.user;
-                        console.log('username: ' + cognitoUser.getUsername() + ' autentificado');
                         resolve(result);
                     },
                     onFailure: function (err: any) {
+                        console.log(authenticationDetails.username, authenticationDetails.password)
                         console.log(err);
                         reject(err);
                     }
@@ -95,8 +94,7 @@ export class UsuarioController {
 
         authenticateUser(authenticationDetails)
             .then((result: any) => {
-                let cognitoUser = result.user;
-                res.status(200).json({ message: cognitoUser.getUsername() + ' ha iniciado sesion correctamente' });
+                res.status(200).json({ message: result + ' se ha iniciado sesion correctamente' });
             })
             .catch((err: any) => {
                 res.status(500).json({ message: 'Lo sentimos, las credenciales no son validas' });
@@ -128,16 +126,10 @@ export class UsuarioController {
 
         confirmRegistrationPromise(cognitoUser, codigo)
             .then((result: any) => {
-                let cognitoUser = result.user;
-                res.status(200).json({ message: cognitoUser.getUsername() + ' fue verificado exitosamente!' });
+                res.status(200).json({ message: 'El usuario fue verificado exitosamente!' });
             })
             .catch((err: any) => {
-                if (err.code === 'CodeExpiredException') {
-                    res.status(400).json({ message: 'El código de verificación ha expirado.' });
-                } else {
-                    res.status(500).json({ message: 'No hemos podido verificar tu cuenta. Correo o código inválido' });
-                    console.log(err.code)
-                }
+                res.status(500).json({ message: 'No hemos podido verificar tu cuenta. Correo o código inválido'});
             });
     }
 
